@@ -1,8 +1,8 @@
 export const site = {
-  name: "By Xin",
-  title: "By Xin",
+  name: "XIN Baiying",
+  title: "XIN Baiying",
   description:
-    "A quiet academic homepage for statistics, machine learning, optimization, and conformal prediction.",
+    "A quiet academic homepage for deep learning, LLMs, learning theory, statistical learning, and optimization.",
   url: "https://by-xin.github.io",
   github: "https://github.com/By-Xin",
   notes: "/BYNotes/",
@@ -10,20 +10,24 @@ export const site = {
 
 export const interests = [
   {
-    title: "Conformal prediction",
-    text: "Coverage guarantees, abstention, and robustness under distribution shift.",
+    title: "Deep learning",
+    text: "Representation learning, modern architectures, and empirical behavior of neural systems.",
   },
   {
-    title: "Online learning",
-    text: "Sequential decision-making, regret analysis, and adaptive algorithms.",
+    title: "Large language models",
+    text: "Capabilities, alignment with statistical principles, and reliable use in research workflows.",
   },
   {
-    title: "Convex optimization",
-    text: "First-order methods, smoothness assumptions, and proof-oriented notes.",
+    title: "Learning theory",
+    text: "Generalization, optimization dynamics, and theoretical views of modern learning.",
   },
   {
     title: "Statistical learning",
-    text: "Learning theory, modern regression, and useful statistical computation.",
+    text: "Modern regression, prediction, uncertainty, and useful statistical computation.",
+  },
+  {
+    title: "Optimization",
+    text: "First-order methods, smoothness assumptions, and algorithms for learning problems.",
   },
 ];
 
@@ -34,7 +38,7 @@ export const projects = [
     repo: "https://github.com/By-Xin/BYNotes",
     meta: "Quartz notebook",
     description:
-      "A maintained note space for statistics, optimization, and online learning.",
+      "A maintained note space for optimization, learning theory, and statistical learning.",
   },
   {
     name: "Retrain-CP",
