@@ -1,0 +1,120 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { archive, interests, projects, site } from "../data/site";
+---
+
+<BaseLayout current="home">
+  <section class="hero" aria-labelledby="home-title">
+    <div>
+      <p class="eyebrow">statistics / learning / optimization</p>
+      <h1 id="home-title">By Xin</h1>
+      <p class="lede">
+        I am building a compact public home for research notes, projects, and
+        writing around statistics, machine learning, optimization, and
+        conformal prediction.
+      </p>
+      <div class="actions" aria-label="Primary links">
+        <a class="text-link" href={site.notes}>Read BYNotes</a>
+        <a class="text-link secondary" href="/projects/">Projects</a>
+        <a class="text-link secondary" href={site.github}>GitHub</a>
+      </div>
+    </div>
+    <aside class="hero-aside" aria-label="Current focus">
+      <img src="/mark.svg" alt="" aria-hidden="true" />
+      <p>
+        Current focus: conformal prediction, distribution shift, online
+        learning, and convex optimization.
+      </p>
+    </aside>
+  </section>
+
+  <section class="section" aria-labelledby="interests-title">
+    <p class="section-kicker">01 / focus</p>
+    <div class="section-body">
+      <h2 id="interests-title">Research Interests</h2>
+      <p class="section-intro">
+        The homepage stays intentionally small. Longer technical notes live in
+        BYNotes, while this site keeps the map: what I work on, what I maintain,
+        and where to find it.
+      </p>
+      <div class="interest-grid">
+        {
+          interests.map((item) => (
+            <article class="interest">
+              <h3>{item.title}</h3>
+              <p>{item.text}</p>
+            </article>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="notes-title">
+    <p class="section-kicker">02 / notes</p>
+    <div class="section-body">
+      <h2 id="notes-title">BYNotes</h2>
+      <div class="note-panel">
+        <div>
+          <p class="section-intro">
+            BYNotes is the maintained Quartz notebook for longer study notes.
+            The root homepage links into it without absorbing its structure.
+          </p>
+          <div class="actions">
+            <a class="text-link" href={site.notes}>Open BYNotes</a>
+            <a class="text-link secondary" href="https://github.com/By-Xin/BYNotes">
+              Repository
+            </a>
+          </div>
+        </div>
+        <ul>
+          <li>Convex Optimization CMU</li>
+          <li>Online Learning</li>
+          <li>Future statistics and learning notes</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="projects-title">
+    <p class="section-kicker">03 / work</p>
+    <div class="section-body">
+      <h2 id="projects-title">Selected Projects</h2>
+      <div class="entry-list">
+        {
+          projects.map((project) => (
+            <article class="entry">
+              <div>
+                <a class="entry-title" href={project.href}>{project.name}</a>
+                <p>{project.description}</p>
+              </div>
+              <span class="entry-meta">{project.meta}</span>
+            </article>
+          ))
+        }
+      </div>
+      <a class="text-link secondary" href="/projects/">All projects</a>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="writing-title">
+    <p class="section-kicker">04 / writing</p>
+    <div class="section-body">
+      <h2 id="writing-title">Writing and Archive</h2>
+      <div class="entry-list">
+        {
+          archive.map((item) => (
+            <article class="entry">
+              <div>
+                <a class="entry-title" href={item.href}>{item.title}</a>
+                <p>{item.description}</p>
+              </div>
+              <span class="entry-meta">{item.date}</span>
+            </article>
+          ))
+        }
+      </div>
+      <a class="text-link secondary" href="/writing/">Writing index</a>
+    </div>
+  </section>
+</BaseLayout>

@@ -1,0 +1,81 @@
+---
+import "../styles/global.css";
+import { site } from "../data/site";
+
+type Props = {
+  title?: string;
+  description?: string;
+  current?: "home" | "about" | "projects" | "writing";
+};
+
+const {
+  title = site.title,
+  description = site.description,
+  current = "home",
+} = Astro.props;
+
+const pageTitle = title === site.title ? site.title : `${title} | ${site.title}`;
+const nav = [
+  { label: "Home", href: "/", key: "home" },
+  { label: "About", href: "/about/", key: "about" },
+  { label: "Projects", href: "/projects/", key: "projects" },
+  { label: "Writing", href: "/writing/", key: "writing" },
+  { label: "BYNotes", href: site.notes, key: "notes" },
+];
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description} />
+    <meta name="theme-color" content="#faf8f8" />
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={Astro.url.href} />
+    <link rel="canonical" href={Astro.url.href} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Schibsted+Grotesk:wght@500;600;700&family=Source+Sans+3:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <title>{pageTitle}</title>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <header class="site-header">
+      <a class="brand" href="/" aria-label="By Xin home">
+        <img src="/mark.svg" alt="" aria-hidden="true" />
+        <span>{site.name}</span>
+      </a>
+      <nav class="site-nav" aria-label="Main navigation">
+        {
+          nav.map((item) => (
+            <a
+              href={item.href}
+              aria-current={current === item.key ? "page" : undefined}
+            >
+              {item.label}
+            </a>
+          ))
+        }
+      </nav>
+    </header>
+
+    <main id="main" class="page">
+      <slot />
+    </main>
+
+    <footer class="site-footer">
+      <span>By Xin</span>
+      <span class="footer-links">
+        <a href={site.github}>GitHub</a>
+        <a href={site.notes}>BYNotes</a>
+      </span>
+    </footer>
+  </body>
+</html>

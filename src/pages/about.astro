@@ -1,0 +1,35 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { interests, site } from "../data/site";
+---
+
+<BaseLayout
+  current="about"
+  title="About"
+  description="A compact profile for By Xin."
+>
+  <article class="prose">
+    <h1>About</h1>
+    <p>
+      I work around statistics, machine learning, optimization, and conformal
+      prediction. This page is meant to stay concise and point outward to
+      maintained notes, code, and future CV material.
+    </p>
+    <p>
+      For longer technical notes, see <a href={site.notes}>BYNotes</a>. For
+      code and public repositories, see <a href={site.github}>GitHub</a>.
+    </p>
+
+    <h2>Interests</h2>
+    <ul>
+      {interests.map((item) => <li><strong>{item.title}</strong>: {item.text}</li>)}
+    </ul>
+
+    <h2>Links</h2>
+    <ul>
+      <li><a href={site.notes}>BYNotes</a></li>
+      <li><a href={site.github}>GitHub</a></li>
+      <li><a href="https://github.com/By-Xin/BYNotes">BYNotes repository</a></li>
+    </ul>
+  </article>
+</BaseLayout>

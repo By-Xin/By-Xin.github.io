@@ -1,0 +1,15 @@
+{
+  "name": "by-xin.github.io",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "ASTRO_TELEMETRY_DISABLED=1 astro dev --host 127.0.0.1",
+    "build": "ASTRO_TELEMETRY_DISABLED=1 astro build",
+    "preview": "ASTRO_TELEMETRY_DISABLED=1 astro preview --host 127.0.0.1"
+  },
+  "devDependencies": {
+    "astro": "^6.3.7",
+    "typescript": "^6.0.3"
+  }
+}
