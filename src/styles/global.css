@@ -140,10 +140,7 @@ p {
 }
 
 .hero {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) 260px;
-  align-items: end;
-  gap: 3rem;
+  display: block;
   padding-bottom: 4rem;
   border-bottom: 1px solid var(--border);
 }
@@ -204,22 +201,6 @@ h3 {
 
 .text-link.secondary {
   color: var(--muted);
-}
-
-.hero-aside {
-  border-left: 1px solid var(--border);
-  padding-left: 1.35rem;
-}
-
-.hero-aside img {
-  width: 4.7rem;
-  height: 4.7rem;
-  margin-bottom: 1.3rem;
-}
-
-.hero-aside p {
-  color: var(--muted);
-  font-size: 0.95rem;
 }
 
 .section {
@@ -381,21 +362,9 @@ h3 {
     padding-top: 3rem;
   }
 
-  .hero,
   .section,
   .note-panel {
     grid-template-columns: 1fr;
-  }
-
-  .hero {
-    gap: 2.2rem;
-  }
-
-  .hero-aside {
-    border-left: 0;
-    border-top: 1px solid var(--border);
-    padding-left: 0;
-    padding-top: 1.3rem;
   }
 
   .section {
