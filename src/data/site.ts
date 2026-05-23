@@ -2,32 +2,29 @@ export const site = {
   name: "XIN Baiying",
   title: "XIN Baiying",
   description:
-    "A quiet academic homepage for deep learning, LLMs, learning theory, statistical learning, and optimization.",
+    "A quiet academic homepage spanning statistics, optimization, and learning.",
   url: "https://by-xin.github.io",
   github: "https://github.com/By-Xin",
+  email: "xin.by@outlook.com",
   notes: "/BYNotes/",
 };
 
 export const interests = [
   {
-    title: "Deep learning",
-    text: "Representation learning, modern architectures, and empirical behavior of neural systems.",
+    title: "Statistical learning theory",
+    text: "Generalization, high-dimensional phenomena, uncertainty, and the statistical structure of prediction.",
   },
   {
-    title: "Large language models",
-    text: "Capabilities, alignment with statistical principles, and reliable use in research workflows.",
+    title: "Optimization for learning",
+    text: "First-order methods, nonconvex landscapes, implicit bias, and scalable algorithms for learning problems.",
   },
   {
-    title: "Learning theory",
-    text: "Generalization, optimization dynamics, and theoretical views of modern learning.",
+    title: "Deep learning and LLMs",
+    text: "Theoretical and empirical questions in representation, scaling, and model behavior.",
   },
   {
-    title: "Statistical learning",
-    text: "Modern regression, prediction, uncertainty, and useful statistical computation.",
-  },
-  {
-    title: "Optimization",
-    text: "First-order methods, smoothness assumptions, and algorithms for learning problems.",
+    title: "Statistics × Optimization × Learning",
+    text: "Mathematical perspectives on modern learning systems across statistical principles, optimization dynamics, and learning algorithms.",
   },
 ];
 
