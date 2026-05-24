@@ -1,0 +1,247 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+---
+
+<BaseLayout
+  current="projects"
+  title="东风何处是人间 / Where Does the East Wind Find the Earth?"
+  description="以宋词文本挖掘为题的中英双语交互项目，追随《东风何处是人间》的问题意识。"
+>
+  <article class="east-wind" lang="zh-Hans">
+    <a class="back-link" href="/projects/">返回项目 / Back to projects</a>
+
+    <header class="project-head">
+      <p class="section-kicker">宋词文本挖掘 / Song Ci text mining</p>
+      <h1>东风何处是人间<br />Where Does the East Wind Find the Earth?</h1>
+      <p class="project-lede">
+        这个项目从《全宋词》中反复出现的“东风”“何处”“人间”出发，沿 notebook 的研究路径重新组织为一个
+        Hugging Face Space：语料检索、词频观察、LDA 主题、Word2Vec/Doc2Vec 结果、弱监督题材分析和字符补全。
+        <span>
+          The project follows the original notebook structure and presents the Song Ci analysis as a live Hugging Face Space.
+        </span>
+      </p>
+      <p class="project-credit">
+        灵感来自导师 Yixuan 的
+        <a href="https://yixuan.blog/cn/2011/03/text-mining-of-song-poems/">《东风何处是人间》</a>。
+        那篇文章以《全宋词》为对象，把“东风”“何处”“人间”推到问题的中心。
+        <span>
+          Inspired by Yixuan's 2011 essay on text mining Song Ci.
+        </span>
+      </p>
+      <p class="project-actions">
+        <a href="https://byleon-east-wind-songci.hf.space">打开独立 Space / Open Space</a>
+        <a href="https://huggingface.co/spaces/BYLEON/east-wind-songci">查看 Space 仓库 / Space repository</a>
+      </p>
+    </header>
+
+    <section class="space-section" aria-labelledby="space-title">
+      <div class="section-head">
+        <p class="section-kicker">交互应用 / interactive app</p>
+        <h2 id="space-title">宋词 notebook 的网页版本<br />A Web Version of the Song Ci Notebook</h2>
+        <p>
+          下面嵌入的是 Hugging Face Space。它读取完整的 <code>songci.csv</code> 和 <code>final_data.csv</code>，
+          主站不再用静态前端模拟 notebook 的分析。
+          <span>
+            The embedded Space uses the corpus files directly instead of static frontend-only approximations.
+          </span>
+        </p>
+      </div>
+      <div class="space-frame-wrap">
+        <iframe
+          src="https://byleon-east-wind-songci.hf.space"
+          title="东风何处是人间 Hugging Face Space"
+          loading="lazy"
+          allow="clipboard-read; clipboard-write"
+        ></iframe>
+      </div>
+    </section>
+
+    <section class="scope-section" aria-labelledby="scope-title">
+      <div>
+        <p class="section-kicker">范围 / scope</p>
+        <h2 id="scope-title">只保留宋词主线<br />Song Ci Only</h2>
+      </div>
+      <p>
+        这个网页版本按当前项目要求去掉英国诗比较部分，保留并强化宋词语料的可读报告和交互入口。
+        <span>
+          The English poetry comparison is omitted; the web version focuses on the Song Ci corpus.
+        </span>
+      </p>
+    </section>
+  </article>
+</BaseLayout>
+
+<style>
+  .east-wind {
+    --ink: #202124;
+    --muted: #5f6368;
+    --line: #d9dedb;
+    --soft: #f6f7f5;
+    --accent: #2f6f73;
+    --accent-dark: #214f52;
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 40px 20px 64px;
+    color: var(--ink);
+  }
+
+  .back-link {
+    display: inline-flex;
+    color: var(--accent-dark);
+    text-decoration: none;
+    font-size: 0.94rem;
+    margin-bottom: 28px;
+  }
+
+  .back-link:hover,
+  .project-credit a:hover,
+  .project-actions a:hover {
+    text-decoration: underline;
+  }
+
+  .project-head {
+    display: grid;
+    gap: 18px;
+    padding-bottom: 30px;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .section-kicker {
+    margin: 0;
+    color: var(--accent-dark);
+    font-size: 0.82rem;
+    font-weight: 700;
+    letter-spacing: 0;
+    text-transform: uppercase;
+  }
+
+  h1,
+  h2,
+  p {
+    margin: 0;
+  }
+
+  code {
+    font-size: 0.95em;
+    color: var(--accent-dark);
+  }
+
+  h1 {
+    max-width: 980px;
+    font-size: clamp(2.15rem, 5vw, 4.6rem);
+    line-height: 1.03;
+    letter-spacing: 0;
+  }
+
+  h2 {
+    font-size: clamp(1.55rem, 3vw, 2.65rem);
+    line-height: 1.12;
+    letter-spacing: 0;
+  }
+
+  .project-lede,
+  .project-credit,
+  .section-head p,
+  .scope-section p {
+    max-width: 900px;
+    color: var(--muted);
+    font-size: 1.02rem;
+    line-height: 1.78;
+  }
+
+  .project-lede span,
+  .project-credit span,
+  .section-head span,
+  .scope-section span {
+    display: block;
+    margin-top: 6px;
+    color: #747a7d;
+  }
+
+  .project-credit a {
+    color: var(--accent-dark);
+    font-weight: 700;
+    text-decoration: none;
+  }
+
+  .project-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    padding-top: 4px;
+  }
+
+  .project-actions a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 42px;
+    padding: 0 16px;
+    border: 1px solid var(--accent);
+    border-radius: 6px;
+    color: var(--accent-dark);
+    font-weight: 700;
+    text-decoration: none;
+  }
+
+  .project-actions a:first-child {
+    background: var(--accent);
+    color: #fff;
+  }
+
+  .space-section {
+    display: grid;
+    gap: 22px;
+    padding: 34px 0;
+  }
+
+  .section-head {
+    display: grid;
+    gap: 12px;
+  }
+
+  .space-frame-wrap {
+    width: 100%;
+    min-height: 780px;
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    overflow: hidden;
+    background: var(--soft);
+  }
+
+  .space-frame-wrap iframe {
+    display: block;
+    width: 100%;
+    height: min(92vh, 900px);
+    min-height: 780px;
+    border: 0;
+  }
+
+  .scope-section {
+    display: grid;
+    grid-template-columns: minmax(220px, 0.34fr) minmax(0, 1fr);
+    gap: 28px;
+    padding-top: 28px;
+    border-top: 1px solid var(--line);
+  }
+
+  @media (max-width: 760px) {
+    .east-wind {
+      padding: 28px 16px 48px;
+    }
+
+    .project-actions a {
+      width: 100%;
+    }
+
+    .space-frame-wrap,
+    .space-frame-wrap iframe {
+      min-height: 680px;
+    }
+
+    .scope-section {
+      grid-template-columns: 1fr;
+      gap: 14px;
+    }
+  }
+</style>

@@ -38,6 +38,13 @@ export const projects = [
       "A maintained note space for optimization, learning theory, and statistical learning.",
   },
   {
+    name: "东风何处是人间 / Where Does the East Wind Find the Earth?",
+    href: "/projects/east-wind/",
+    meta: "宋词交互 NLP",
+    description:
+      "一个以《东风何处是人间》为灵感起点的宋词文本挖掘项目。 Inspired by Yixuan's essay on Song Ci text mining.",
+  },
+  {
     name: "Retrain-CP",
     href: "https://github.com/By-Xin/Retrain-CP",
     repo: "https://github.com/By-Xin/Retrain-CP",
