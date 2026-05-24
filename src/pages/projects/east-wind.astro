@@ -5,19 +5,19 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
 <BaseLayout
   current="projects"
   title="东风何处是人间 / Where Does the East Wind Find the Earth?"
-  description="以宋词文本挖掘为题的中英双语交互项目，追随《东风何处是人间》的问题意识。"
+  description="以宋词统计阅读为题的中英双语交互项目，追随《东风何处是人间》的问题意识。"
 >
   <article class="east-wind" lang="zh-Hans">
     <a class="back-link" href="/projects/">返回项目 / Back to projects</a>
 
     <header class="project-head">
-      <p class="section-kicker">宋词文本挖掘 / Song Ci text mining</p>
+      <p class="section-kicker">宋词统计读本 / Song Ci statistical reading</p>
       <h1>东风何处是人间<br />Where Does the East Wind Find the Earth?</h1>
       <p class="project-lede">
-        这个项目从《全宋词》中反复出现的“东风”“何处”“人间”出发，沿 notebook 的研究路径重新组织为一个
-        Hugging Face Space：语料检索、词频观察、LDA 主题、Word2Vec/Doc2Vec 结果、弱监督题材分析和字符补全。
+        这个项目从《全宋词》中反复出现的“东风”“何处”“人间”出发，重新组织为一个面向诗词读者的
+        Hugging Face Space：语料检索、词频观察、自动词群、词语邻域和整首词的位置地图。
         <span>
-          The project follows the original notebook structure and presents the Song Ci analysis as a live Hugging Face Space.
+          The project presents Song Ci statistics as a live, reader-facing Hugging Face Space.
         </span>
       </p>
       <p class="project-credit">
@@ -37,12 +37,12 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
     <section class="space-section" aria-labelledby="space-title">
       <div class="section-head">
         <p class="section-kicker">交互应用 / interactive app</p>
-        <h2 id="space-title">宋词 notebook 的网页版本<br />A Web Version of the Song Ci Notebook</h2>
+        <h2 id="space-title">可以玩的宋词读本<br />A Playable Song Ci Reader</h2>
         <p>
-          下面嵌入的是 Hugging Face Space。它读取完整的 <code>songci.csv</code> 和 <code>final_data.csv</code>，
-          主站不再用静态前端模拟 notebook 的分析。
+          下面嵌入的是 Hugging Face Space。它读取完整的 <code>songci.csv</code> 和离线计算好的无监督统计结果，
+          用交互图展示词频、词群、词语邻域和作品远近。
           <span>
-            The embedded Space uses the corpus files directly instead of static frontend-only approximations.
+            The embedded Space uses the corpus and saved unsupervised artifacts instead of frontend-only approximations.
           </span>
         </p>
       </div>
