@@ -13,17 +13,9 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
     <header class="project-head">
       <p class="section-kicker">宋词统计读本 / Song Ci statistical reading</p>
       <h1>东风何处是人间<br />Where Does the East Wind Find the Earth?</h1>
-      <p class="project-lede">
-        这个项目从《全宋词》中反复出现的“东风”“何处”“人间”出发，重新组织为一个面向诗词读者的
-        Hugging Face Space：语料检索、词频观察、自动词群、词语邻域和整首词的位置地图。
-        <span>
-          The project presents Song Ci statistics as a live, reader-facing Hugging Face Space.
-        </span>
-      </p>
       <p class="project-credit">
         灵感来自导师 Yixuan 的
         <a href="https://yixuan.blog/cn/2011/03/text-mining-of-song-poems/">《东风何处是人间》</a>。
-        那篇文章以《全宋词》为对象，把“东风”“何处”“人间”推到问题的中心。
         <span>
           Inspired by Yixuan's 2011 essay on text mining Song Ci.
         </span>
@@ -37,14 +29,7 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
     <section class="space-section" aria-labelledby="space-title">
       <div class="section-head">
         <p class="section-kicker">交互应用 / interactive app</p>
-        <h2 id="space-title">可以玩的宋词读本<br />A Playable Song Ci Reader</h2>
-        <p>
-          下面嵌入的是 Hugging Face Space。它读取完整的 <code>songci.csv</code> 和离线计算好的无监督统计结果，
-          用交互图展示词频、词群、词语邻域和作品远近。
-          <span>
-            The embedded Space uses the corpus and saved unsupervised artifacts instead of frontend-only approximations.
-          </span>
-        </p>
+        <h2 id="space-title">宋词读本<br />Song Ci Reader</h2>
       </div>
       <div class="space-frame-wrap">
         <iframe
@@ -54,19 +39,6 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
           allow="clipboard-read; clipboard-write"
         ></iframe>
       </div>
-    </section>
-
-    <section class="scope-section" aria-labelledby="scope-title">
-      <div>
-        <p class="section-kicker">范围 / scope</p>
-        <h2 id="scope-title">只保留宋词主线<br />Song Ci Only</h2>
-      </div>
-      <p>
-        这个网页版本按当前项目要求去掉英国诗比较部分，保留并强化宋词语料的可读报告和交互入口。
-        <span>
-          The English poetry comparison is omitted; the web version focuses on the Song Ci corpus.
-        </span>
-      </p>
     </section>
   </article>
 </BaseLayout>
@@ -139,20 +111,16 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
     letter-spacing: 0;
   }
 
-  .project-lede,
   .project-credit,
-  .section-head p,
-  .scope-section p {
+  .section-head p {
     max-width: 900px;
     color: var(--muted);
     font-size: 1.02rem;
     line-height: 1.78;
   }
 
-  .project-lede span,
   .project-credit span,
-  .section-head span,
-  .scope-section span {
+  .section-head span {
     display: block;
     margin-top: 6px;
     color: #747a7d;
@@ -217,14 +185,6 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
     border: 0;
   }
 
-  .scope-section {
-    display: grid;
-    grid-template-columns: minmax(220px, 0.34fr) minmax(0, 1fr);
-    gap: 28px;
-    padding-top: 28px;
-    border-top: 1px solid var(--line);
-  }
-
   @media (max-width: 760px) {
     .east-wind {
       padding: 28px 16px 48px;
@@ -237,11 +197,6 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
     .space-frame-wrap,
     .space-frame-wrap iframe {
       min-height: 680px;
-    }
-
-    .scope-section {
-      grid-template-columns: 1fr;
-      gap: 14px;
     }
   }
 </style>
