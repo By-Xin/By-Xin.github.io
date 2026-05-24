@@ -40,9 +40,9 @@ export const projects = [
   {
     name: "东风何处是人间 / Where Does the East Wind Find the Earth?",
     href: "/projects/east-wind/",
-    meta: "宋词交互 NLP",
+    meta: "宋词统计读本",
     description:
-      "一个以《东风何处是人间》为灵感起点的宋词文本挖掘项目。 Inspired by Yixuan's essay on Song Ci text mining.",
+      "以《东风何处是人间》为灵感起点，整理《全宋词》的词频、词群与作品距离。",
   },
   {
     name: "Retrain-CP",
