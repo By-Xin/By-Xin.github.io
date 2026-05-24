@@ -1,10 +1,6 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
-import { archive, projects, site } from "../data/site";
-
-const featuredProjects = projects.filter((project) =>
-  ["/projects/east-wind/"].includes(project.href),
-);
+import { archive, site } from "../data/site";
 ---
 
 <BaseLayout current="home">
@@ -67,23 +63,10 @@ const featuredProjects = projects.filter((project) =>
   <section class="section" aria-labelledby="projects-title">
     <p class="section-kicker">03 / work</p>
     <div class="section-body">
-      <h2 id="projects-title">Selected Projects</h2>
+      <h2 id="projects-title">Projects and Publications</h2>
       <p class="section-intro">
-        Public-facing projects and maintained experiments.
+        Research projects and publications will be listed here.
       </p>
-      <div class="entry-list">
-        {
-          featuredProjects.map((project) => (
-            <article class="entry">
-              <div>
-                <a class="entry-title" href={project.href}>{project.name}</a>
-                <p>{project.description}</p>
-              </div>
-              <span class="entry-meta">{project.meta}</span>
-            </article>
-          ))
-        }
-      </div>
       <a class="text-link secondary" href="/projects/">Projects index</a>
     </div>
   </section>

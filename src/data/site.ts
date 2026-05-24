@@ -30,21 +30,6 @@ export const interests = [
 
 export const projects = [
   {
-    name: "BYNotes",
-    href: "/BYNotes/",
-    repo: "https://github.com/By-Xin/BYNotes",
-    meta: "Quartz notebook",
-    description:
-      "A maintained note space for optimization, learning theory, and statistical learning.",
-  },
-  {
-    name: "东风何处是人间 / Where Does the East Wind Find the Earth?",
-    href: "/projects/east-wind/",
-    meta: "宋词统计读本",
-    description:
-      "以《东风何处是人间》为灵感起点，整理《全宋词》的词频、词群与作品距离。",
-  },
-  {
     name: "Retrain-CP",
     href: "https://github.com/By-Xin/Retrain-CP",
     repo: "https://github.com/By-Xin/Retrain-CP",
@@ -62,6 +47,13 @@ export const projects = [
 ];
 
 export const archive = [
+  {
+    title: "东风何处是人间 / Where Does the East Wind Find the Earth?",
+    href: "/writing/east-wind/",
+    date: "2026-05-24",
+    description:
+      "以《东风何处是人间》为灵感起点，整理《全宋词》的词频、词群与作品距离。",
+  },
   {
     title: "STATDIY resource list",
     href: "/writing/statdiy/",
