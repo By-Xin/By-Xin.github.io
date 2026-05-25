@@ -1,7 +1,7 @@
 ---
 layout: ../../layouts/WritingMarkdownLayout.astro
-title: 本科毕业论文致谢
-description: 本科毕业论文致谢，写于 2024 年 4 月 18 日。
+title: Undergraduate Thesis Acknowledgement
+description: 2024 年 4 月 18 日写于大学路，华灯初上。
 date: 2024-04-18
 ---
 

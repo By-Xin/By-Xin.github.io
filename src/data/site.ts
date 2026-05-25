@@ -55,10 +55,10 @@ export const archive = [
       "以《东风何处是人间》为灵感起点，整理《全宋词》的词频、词群与作品距离。",
   },
   {
-    title: "本科毕业论文致谢",
+    title: "Undergraduate Thesis Acknowledgement",
     href: "/writing/undergraduate-thesis-acknowledgment/",
     date: "2024-04-18",
-    description: "本科毕业论文致谢，写于大学路，华灯初上。",
+    description: "2024 年 4 月 18 日写于大学路，华灯初上。",
   },
   {
     title: "STATDIY bookmarks",
