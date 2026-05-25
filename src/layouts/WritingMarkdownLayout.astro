@@ -1,0 +1,35 @@
+---
+import BaseLayout from "./BaseLayout.astro";
+
+type Props = {
+  title: string;
+  description?: string;
+  current?: "home" | "about" | "projects" | "writing";
+  date?: string;
+};
+
+const {
+  title,
+  description = title,
+  current = "writing",
+  date,
+} = Astro.props;
+---
+
+<BaseLayout current={current} title={title} description={description}>
+  <article class="prose">
+    <a class="back-link" href="/writing/">Back to writing</a>
+    {date && <p class="writing-date">{date}</p>}
+    <h1>{title}</h1>
+    <slot />
+  </article>
+</BaseLayout>
+
+<style>
+  .writing-date {
+    color: var(--quiet);
+    font-family: var(--mono);
+    font-size: 0.82rem;
+    margin-bottom: 0.65rem;
+  }
+</style>

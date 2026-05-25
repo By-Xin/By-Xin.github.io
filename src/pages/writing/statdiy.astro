@@ -1,39 +1,524 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
+
+type Resource = {
+  kind: string;
+  title: string;
+  href?: string;
+  meta?: string;
+  note?: string;
+};
+
+type ResourceSection = {
+  title: string;
+  intro?: string;
+  resources: Resource[];
+};
+
+const sections: ResourceSection[] = [
+  {
+    title: "Statistics & Probability",
+    intro: "Core statistics and probability references, with the PSU course pages kept as friendly entry points.",
+    resources: [
+      {
+        kind: "Book",
+        title: "Introduction to Probability, Statistics, and Random Processes",
+        href: "https://www.probabilitycourse.com",
+        note: "A broad probability-first online reference.",
+      },
+      {
+        kind: "Course",
+        title: "STAT414 Applied Probability Theory",
+        href: "https://online.stat.psu.edu/stat414/",
+        meta: "Penn State",
+      },
+      {
+        kind: "Course",
+        title: "STAT505 Applied Multivariate Statistical Analysis",
+        href: "https://online.stat.psu.edu/stat505/",
+        meta: "Penn State",
+      },
+      {
+        kind: "Book",
+        title: "Causal Inference: The Mixtape",
+        meta: "Scott Cunningham",
+      },
+      {
+        kind: "Book",
+        title: "Mathematical Statistics and Data Analysis",
+        meta: "3rd edition",
+      },
+      {
+        kind: "Book",
+        title: "Advanced Probability Theory",
+        href: "https://github.com/By-Xin/Sufe/blob/main/Bookshelf/Advanced_Probability_Theory_%E9%AB%98%E7%AD%89%E6%A6%82%E7%8E%87%E8%AE%BA_Bi_Z_Library%20(2).pdf",
+        meta: "Bing-Yi Jing",
+        note: "Advanced probability notes that are still approachable as a first pass.",
+      },
+      {
+        kind: "Book",
+        title: "Probability: Theory and Examples",
+        meta: "Rick Durrett",
+      },
+      {
+        kind: "Book",
+        title: "Knowing the Odds: An Introduction to Probability",
+        meta: "John B. Walsh",
+        note: "Useful for probability foundations, especially the sigma-algebra start.",
+      },
+      {
+        kind: "Book",
+        title: "高等数理统计",
+        meta: "茆诗松 / 王静龙 / 濮晓龙",
+      },
+      {
+        kind: "Reference",
+        title: "高等数理统计习题参考答案",
+        href: "https://www.zhihu.com/tardis/zm/art/359870228?source_id=1005",
+      },
+      {
+        kind: "Book",
+        title: "A Probability Path",
+        meta: "Sidney I. Resnick",
+        note: "Measure-theoretic probability from the ground up.",
+      },
+    ],
+  },
+  {
+    title: "Machine Learning & Data Mining",
+    resources: [
+      {
+        kind: "Notes",
+        title: "Statistical Methods for Machine Learning",
+        href: "https://www.stat.cmu.edu/~larry/=sml/",
+        meta: "CMU",
+      },
+      {
+        kind: "Book",
+        title: "The Elements of Statistical Learning",
+        href: "https://hastie.su.domains/ElemStatLearn/",
+      },
+      {
+        kind: "Course",
+        title: "STAT508 Applied Data Mining and Statistical Learning",
+        href: "https://online.stat.psu.edu/stat508/",
+        meta: "Penn State",
+      },
+      {
+        kind: "Video",
+        title: "18.065 Linear Algebra and Learning from Data",
+        href: "https://www.bilibili.com/video/BV1Tu411r7mZ?p=3&vd_source=8a00dab0be94d29388f2286892ba8d50",
+        meta: "Gilbert Strang",
+      },
+      {
+        kind: "Video",
+        title: "现代数字信号处理",
+        href: "https://www.bilibili.com/video/BV19P4y1L7Ku/?spm_id_from=333.337.search-card.all.click&vd_source=8a00dab0be94d29388f2286892ba8d50",
+        meta: "张颢",
+        note: "Machine learning from a signal-processing angle.",
+      },
+      {
+        kind: "Book",
+        title: "机器学习实战：基于 Scikit-Learn",
+      },
+    ],
+  },
+  {
+    title: "Deep Learning, NLP & RL",
+    resources: [
+      {
+        kind: "Course",
+        title: "Stanford CS231n: Convolutional Neural Networks for Visual Recognition",
+        href: "https://cs231n.stanford.edu/",
+        meta: "Stanford",
+      },
+      {
+        kind: "Video",
+        title: "PyTorch 深度学习实践",
+        href: "https://space.bilibili.com/21241234/channel/seriesdetail?sid=245319",
+        meta: "刘二大人",
+      },
+      {
+        kind: "Video",
+        title: "PyTorch 深度学习快速入门教程",
+        href: "https://www.bilibili.com/video/BV1hE411t7RN/?spm_id_from=333.337.search-card.all.click&vd_source=8a00dab0be94d29388f2286892ba8d50",
+        meta: "小土堆",
+      },
+      {
+        kind: "Channel",
+        title: "霹雳吧啦Wz",
+        href: "https://space.bilibili.com/18161609?spm_id_from=333.337.0.0",
+        meta: "bilibili",
+      },
+      {
+        kind: "Channel",
+        title: "Bubbliiiing",
+        href: "https://space.bilibili.com/472467171?spm_id_from=333.337.0.0",
+        meta: "bilibili",
+      },
+      {
+        kind: "Channel",
+        title: "DASOU讲AI",
+        href: "https://space.bilibili.com/414678948?spm_id_from=333.337.0.0",
+        meta: "bilibili",
+      },
+      {
+        kind: "Book",
+        title: "Natural Language Processing with Transformers",
+        meta: "Lewis Tunstall, Leandro von Werra, Thomas Wolf",
+      },
+      {
+        kind: "Video",
+        title: "手把手带你实战 HuggingFace Transformers",
+        href: "https://space.bilibili.com/21060026/channel/collectiondetail?sid=1357748",
+      },
+      {
+        kind: "Course",
+        title: "UCB CS294: Deep Reinforcement Learning",
+        href: "https://rail.eecs.berkeley.edu/deeprlcourse-fa17/index.html",
+        meta: "UC Berkeley",
+      },
+      {
+        kind: "Course",
+        title: "David Silver RL",
+        href: "https://www.davidsilver.uk/teaching/",
+        note: "Especially clear for the MDP introduction.",
+      },
+      {
+        kind: "Website",
+        title: "RL Playground",
+        href: "https://www.gymlibrary.dev/content/basic_usage/",
+      },
+      {
+        kind: "Video",
+        title: "DeepMind RL Lecture",
+        href: "https://www.youtube.com/watch?v=2pWv7GOvuf0",
+      },
+    ],
+  },
+  {
+    title: "Database",
+    resources: [
+      {
+        kind: "Book",
+        title: "SQL进阶教程",
+      },
+      {
+        kind: "Book",
+        title: "Hive",
+      },
+    ],
+  },
+  {
+    title: "Mathematics & Optimization",
+    resources: [
+      {
+        kind: "Video",
+        title: "Real Analysis, Spring 2010",
+        href: "https://analysisyawp.blogspot.com/",
+        meta: "Francis Su, Harvey Mudd College",
+      },
+      {
+        kind: "Book",
+        title: "Mathematical Analysis",
+        meta: "V. A. Zorich",
+      },
+      {
+        kind: "Book",
+        title: "Principles of Mathematical Analysis",
+        meta: "Walter Rudin",
+      },
+      {
+        kind: "Book",
+        title: "Numerical Analysis",
+        meta: "Timothy Sauer",
+      },
+      {
+        kind: "Book",
+        title: "Real Analysis: Modern Techniques and Their Applications",
+        meta: "Gerald B. Folland",
+      },
+      {
+        kind: "Course",
+        title: "Convex Optimization: Fall 2019",
+        href: "https://www.stat.cmu.edu/~ryantibs/convexopt/",
+        meta: "CMU",
+      },
+      {
+        kind: "Video",
+        title: "凸优化",
+        href: "https://www.bilibili.com/video/BV1Jt411p7jE/?p=2&share_source=copy_web&vd_source=9471c7cd3fca9ffedd9167aefed57c6d",
+        meta: "中科大",
+      },
+    ],
+  },
+  {
+    title: "Computer Science & Systems",
+    intro: "Programming, Linux, and systems references from the older lists.",
+    resources: [
+      {
+        kind: "Book",
+        title: "C Primer Plus",
+      },
+      {
+        kind: "Book",
+        title: "鸟哥的 Linux 私房菜",
+      },
+      {
+        kind: "Book",
+        title: "Linux 就该这么学",
+      },
+      {
+        kind: "Book",
+        title: "Introduction to Computing Systems: From Bits and Gates to C and Beyond",
+        meta: "Yale N. Patt and Sanjay J. Patel",
+      },
+    ],
+  },
+  {
+    title: "Academic Writing",
+    resources: [
+      {
+        kind: "Book",
+        title: "Science Research Writing for Non-Native Speakers of English",
+      },
+    ],
+  },
+  {
+    title: "Readings",
+    intro: "Long-form pieces from the Sufe wiki home page, kept here so this page can work as a bookmark shelf.",
+    resources: [
+      {
+        kind: "Article",
+        title: "Donoho: 数据科学50年",
+        href: "https://mp.weixin.qq.com/s?__biz=MjM5NDQ3NTkwMA==&mid=2650157914&idx=1&sn=d2afa577385e80f170be998dbecaae8b&chksm=be85a94989f2205fcb47f8be4abd88dc862e7b0175efa7bd1c559a2b61b088ee204c2c49495f&from=industrynews&version=4.1.6.6017&platform=win#rd",
+      },
+      {
+        kind: "Article",
+        title: "Breiman访谈录 |《统计建模：两种文化》20周年纪念",
+        href: "https://mp.weixin.qq.com/s?__biz=MjM5NDQ3NTkwMA==&mid=2650148161&idx=1&sn=ab1d9a8c504389c6d53f6f749fa865cb&chksm=be85975289f21e444d0724b4314d751d08786cc1e10e960d5c3e9c159270ce9f759a9f32382e&from=industrynews&version=4.1.6.6017&platform=win#rd",
+      },
+      {
+        kind: "Article",
+        title: "统计学两个文化的差异是什么？",
+        href: "https://mp.weixin.qq.com/s?__biz=MjM5NDQ3NTkwMA==&mid=2650153157&idx=1&sn=9909bca5c0c377dc517a4847550c34b8&chksm=be85bad689f233c064914e18bf8b9853966d63d7feac99b0669cee9b848e20d583e6e6e9f9ec&from=industrynews&version=4.1.6.6017&platform=win#rd",
+      },
+      {
+        kind: "Article",
+        title: "大熔炉 | Rob Tibshirani 和 Trevor Hastie 谈《统计建模：两种文化》",
+        href: "https://mp.weixin.qq.com/s?__biz=MjM5NDQ3NTkwMA==&mid=2650148710&idx=1&sn=f4a53f374c17a2cd078c61e3fe50386a&chksm=be85957589f21c633c16a9e045699c580aaee6d20067b207eaaa860ba6c5aa72eecb58896712&from=industrynews&version=4.1.6.6017&platform=win#rd",
+      },
+      {
+        kind: "Article",
+        title: "BFGS in a Nutshell: An Introduction to Quasi-Newton Methods",
+        href: "https://towardsdatascience.com/bfgs-in-a-nutshell-an-introduction-to-quasi-newton-methods-21b0e13ee504/",
+        meta: "Towards Data Science",
+      },
+    ],
+  },
+];
+
+const sourceLinks = [
+  {
+    title: "ByCsdiy README",
+    href: "https://github.com/By-Xin/ByCsdiy/blob/main/README.md",
+  },
+  {
+    title: "Sufe STATDIY wiki",
+    href: "https://github.com/By-Xin/Sufe/wiki/STATDIY",
+  },
+  {
+    title: "Sufe wiki home readings",
+    href: "https://github.com/By-Xin/Sufe/wiki",
+  },
+  {
+    title: "Recommendation discussion",
+    href: "https://github.com/By-Xin/Sufe/discussions/6",
+  },
+];
 ---
 
 <BaseLayout
   current="writing"
-  title="STATDIY resource list"
-  description="An archived statistics and machine learning resource list."
+  title="STATDIY bookmarks"
+  description="A living bookmark shelf for statistics, data science, mathematics, systems, and academic writing resources."
 >
-  <article class="prose">
+  <article class="prose resource-page">
     <a class="back-link" href="/writing/">Back to writing</a>
-    <h1>STATDIY resource list</h1>
+    <h1>STATDIY bookmarks</h1>
+    <p class="resource-lede">
+      This page is a working bookmark shelf for statistics, data science,
+      mathematics, systems, and academic writing resources. It folds together the
+      older ByCsdiy README list, the Sufe STATDIY wiki, and the four readings
+      from the Sufe wiki home page, with duplicate items collapsed.
+    </p>
     <p>
-      This is an archived resource list from the earlier Hexo site. The active,
-      maintained note space is now <a href="/BYNotes/">BYNotes</a>.
+      Linked items open the original source. Unlinked book entries are kept as
+      reading pointers so the list can stay useful without pretending every item
+      has a clean public URL.
     </p>
 
-    <h2>Statistical and Machine Learning</h2>
-    <ul>
-      <li><a href="https://www.stat.cmu.edu/~larry/=sml/">Statistical Methods for Machine Learning</a>, CMU lecture notes</li>
-      <li><a href="https://hastie.su.domains/ElemStatLearn/">The Elements of Statistical Learning</a></li>
-      <li><a href="https://online.stat.psu.edu/stat508/">STAT508 Applied Data Mining and Statistical Learning</a>, Penn State</li>
-      <li><a href="https://online.stat.psu.edu/stat505/">STAT505 Applied Multivariate Statistical Analysis</a>, Penn State</li>
-    </ul>
+    <nav class="resource-jump" aria-label="STATDIY sections">
+      {
+        sections.map((section) => (
+          <a href={`#${section.title.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "")}`}>
+            {section.title}
+          </a>
+        ))
+      }
+    </nav>
 
-    <h2>Optimization</h2>
-    <ul>
-      <li><a href="https://www.stat.cmu.edu/~ryantibs/convexopt/">Convex Optimization: Fall 2019</a>, CMU</li>
-    </ul>
+    {
+      sections.map((section) => {
+        const id = section.title
+          .toLowerCase()
+          .replace(/[^a-z0-9]+/g, "-")
+          .replace(/^-|-$/g, "");
 
-    <h2>Books and Topics</h2>
-    <ul>
-      <li>Python data science project practice</li>
-      <li>Advanced SQL</li>
-      <li>Algorithms</li>
-      <li>Academic writing for non-native English speakers</li>
-    </ul>
+        return (
+          <section class="resource-section" id={id}>
+            <h2>{section.title}</h2>
+            {section.intro && <p class="resource-section-intro">{section.intro}</p>}
+            <ul class="bookmark-list">
+              {
+                section.resources.map((resource) => (
+                  <li>
+                    <div class="resource-line">
+                      <span class="resource-kind">{resource.kind}</span>
+                      {resource.href ? (
+                        <a href={resource.href}>{resource.title}</a>
+                      ) : (
+                        <span class="resource-title">{resource.title}</span>
+                      )}
+                      {resource.meta && <span class="resource-meta">{resource.meta}</span>}
+                    </div>
+                    {resource.note && <p>{resource.note}</p>}
+                  </li>
+                ))
+              }
+            </ul>
+          </section>
+        );
+      })
+    }
+
+    <section class="resource-section" id="source-pages">
+      <h2>Source Pages</h2>
+      <ul class="source-list">
+        {
+          sourceLinks.map((source) => (
+            <li><a href={source.href}>{source.title}</a></li>
+          ))
+        }
+      </ul>
+      <p class="bookshelf-note">
+        Some book pointers may also have local copies in the old
+        <a href="https://github.com/By-Xin/Sufe/tree/main/Bookshelf">Sufe Bookshelf</a>.
+      </p>
+    </section>
   </article>
 </BaseLayout>
+
+<style>
+  .resource-page {
+    max-width: 860px;
+  }
+
+  .resource-lede {
+    color: var(--muted);
+    font-size: 1.06rem;
+    line-height: 1.58;
+  }
+
+  .resource-jump {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.45rem 1rem;
+    margin: 1.4rem 0 0;
+    padding-top: 1rem;
+    border-top: 1px solid var(--border);
+    font-size: 0.9rem;
+  }
+
+  .resource-section-intro {
+    color: var(--muted);
+    margin-bottom: 0.85rem;
+  }
+
+  .prose .bookmark-list,
+  .prose .source-list {
+    margin: 0;
+    padding-left: 0;
+    color: var(--text);
+    list-style: none;
+  }
+
+  .bookmark-list li {
+    padding: 0.78rem 0;
+    border-top: 1px solid var(--border);
+  }
+
+  .bookmark-list li:last-child {
+    border-bottom: 1px solid var(--border);
+  }
+
+  .bookmark-list li + li,
+  .source-list li + li {
+    margin-top: 0;
+  }
+
+  .resource-line {
+    display: flex;
+    align-items: baseline;
+    gap: 0.55rem;
+    flex-wrap: wrap;
+  }
+
+  .resource-kind {
+    flex: 0 0 5.3rem;
+    color: var(--quiet);
+    font-family: var(--mono);
+    font-size: 0.74rem;
+  }
+
+  .resource-title {
+    font-weight: 600;
+  }
+
+  .resource-meta {
+    color: var(--quiet);
+    font-size: 0.9rem;
+  }
+
+  .bookmark-list p {
+    margin-top: 0.28rem;
+    margin-left: 5.85rem;
+    color: var(--muted);
+    font-size: 0.94rem;
+    line-height: 1.5;
+  }
+
+  .source-list li {
+    padding: 0.35rem 0;
+  }
+
+  .bookshelf-note {
+    margin-top: 1rem;
+    color: var(--muted);
+  }
+
+  @media (max-width: 640px) {
+    .resource-line {
+      display: grid;
+      gap: 0.15rem;
+    }
+
+    .resource-kind {
+      flex-basis: auto;
+    }
+
+    .bookmark-list p {
+      margin-left: 0;
+    }
+  }
+</style>

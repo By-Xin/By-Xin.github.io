@@ -55,11 +55,17 @@ export const archive = [
       "以《东风何处是人间》为灵感起点，整理《全宋词》的词频、词群与作品距离。",
   },
   {
-    title: "STATDIY resource list",
+    title: "本科毕业论文致谢",
+    href: "/writing/undergraduate-thesis-acknowledgment/",
+    date: "2024-04-18",
+    description: "本科毕业论文致谢，写于大学路，华灯初上。",
+  },
+  {
+    title: "STATDIY bookmarks",
     href: "/writing/statdiy/",
     date: "2023-06-27",
     description:
-      "An older learning-resource list, now mostly superseded by BYNotes.",
+      "A living bookmark shelf for statistics, data science, mathematics, systems, and academic writing.",
   },
   {
     title: "Farewell, Ryuichi Sakamoto",
