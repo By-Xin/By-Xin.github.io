@@ -7,6 +7,7 @@ type Resource = {
   href?: string;
   meta?: string;
   note?: string;
+  rating?: 1 | 2 | 3;
 };
 
 type ResourceSection = {
@@ -37,6 +38,14 @@ const sections: ResourceSection[] = [
         title: "STAT505 Applied Multivariate Statistical Analysis",
         href: "https://online.stat.psu.edu/stat505/",
         meta: "Penn State",
+      },
+      {
+        kind: "Course",
+        title: "Computational Statistics",
+        href: "https://statr.me/teaching/compstat/",
+        meta: "Yixuan Qiu, Fall 2025",
+        note: "Statistical computing toolbox: numerical linear algebra, optimization, simulation, and sampling.",
+        rating: 3,
       },
       {
         kind: "Book",
@@ -92,6 +101,14 @@ const sections: ResourceSection[] = [
         title: "Statistical Methods for Machine Learning",
         href: "https://www.stat.cmu.edu/~larry/=sml/",
         meta: "CMU",
+      },
+      {
+        kind: "Course",
+        title: "Algorithmic Foundations of Learning",
+        href: "https://www.stats.ox.ac.uk/~rebeschi/teaching/AFoL/22/",
+        meta: "Patrick Rebeschini, University of Oxford",
+        note: "Rigorous learning theory with high-dimensional probability, statistics, and optimisation.",
+        rating: 3,
       },
       {
         kind: "Book",
@@ -383,6 +400,11 @@ const sourceLinks = [
                       ) : (
                         <span class="resource-title">{resource.title}</span>
                       )}
+                      {resource.rating && (
+                        <span class="resource-rating" aria-label={`${resource.rating} of 3 stars`}>
+                          {"★".repeat(resource.rating)}
+                        </span>
+                      )}
                       {resource.meta && <span class="resource-meta">{resource.meta}</span>}
                     </div>
                     {resource.note && <p>{resource.note}</p>}
@@ -481,6 +503,12 @@ const sourceLinks = [
   .resource-meta {
     color: var(--quiet);
     font-size: 0.9rem;
+  }
+
+  .resource-rating {
+    color: var(--accent);
+    font-size: 0.92rem;
+    white-space: nowrap;
   }
 
   .bookmark-list p {
