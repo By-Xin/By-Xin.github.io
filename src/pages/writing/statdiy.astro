@@ -16,6 +16,39 @@ type ResourceSection = {
   resources: Resource[];
 };
 
+type ResourceTypeGroup = {
+  title: string;
+  kinds: string[];
+  resources: Resource[];
+};
+
+const resourceTypeGroups = [
+  {
+    title: "Books",
+    kinds: ["Book"],
+  },
+  {
+    title: "Papers, Articles & PDFs",
+    kinds: ["Paper", "Article", "PDF"],
+  },
+  {
+    title: "Courses",
+    kinds: ["Course"],
+  },
+  {
+    title: "Notes & References",
+    kinds: ["Notes", "Reference"],
+  },
+  {
+    title: "Websites",
+    kinds: ["Website"],
+  },
+  {
+    title: "Videos & Channels",
+    kinds: ["Video", "Channel"],
+  },
+];
+
 const sections: ResourceSection[] = [
   {
     title: "Statistics & Probability",
@@ -318,6 +351,32 @@ const sourceLinks = [
     href: "https://github.com/By-Xin/Sufe/discussions/6",
   },
 ];
+
+const knownResourceKinds = new Set(resourceTypeGroups.flatMap((group) => group.kinds));
+
+const groupResourcesByType = (resources: Resource[]): ResourceTypeGroup[] => {
+  const grouped = resourceTypeGroups
+    .map((group) => ({
+      ...group,
+      resources: resources.filter((resource) => group.kinds.includes(resource.kind)),
+    }))
+    .filter((group) => group.resources.length > 0);
+
+  const otherResources = resources.filter((resource) => !knownResourceKinds.has(resource.kind));
+
+  if (otherResources.length === 0) {
+    return grouped;
+  }
+
+  return [
+    ...grouped,
+    {
+      title: "Other",
+      kinds: otherResources.map((resource) => resource.kind),
+      resources: otherResources,
+    },
+  ];
+};
 ---
 
 <BaseLayout
@@ -361,29 +420,38 @@ const sourceLinks = [
           <section class="resource-section" id={id}>
             <h2>{section.title}</h2>
             {section.intro && <p class="resource-section-intro">{section.intro}</p>}
-            <ul class="bookmark-list">
-              {
-                section.resources.map((resource) => (
-                  <li>
-                    <div class="resource-line">
-                      <span class="resource-kind">{resource.kind}</span>
-                      {resource.href ? (
-                        <a href={resource.href}>{resource.title}</a>
-                      ) : (
-                        <span class="resource-title">{resource.title}</span>
-                      )}
-                      {resource.rating && (
-                        <span class="resource-rating" aria-label={`${resource.rating} of 3 stars`}>
-                          {"★".repeat(resource.rating)}
-                        </span>
-                      )}
-                      {resource.meta && <span class="resource-meta">{resource.meta}</span>}
-                    </div>
-                    {resource.note && <p>{resource.note}</p>}
-                  </li>
-                ))
-              }
-            </ul>
+            {
+              groupResourcesByType(section.resources).map((group) => (
+                <div class="resource-type-group">
+                  <h3 class="resource-type-heading">{group.title}</h3>
+                  <ul class="bookmark-list">
+                    {
+                      group.resources.map((resource) => (
+                        <li>
+                          <div class="resource-line">
+                            {resource.href ? (
+                              <a href={resource.href}>{resource.title}</a>
+                            ) : (
+                              <span class="resource-title">{resource.title}</span>
+                            )}
+                            {resource.rating && (
+                              <span class="resource-rating" aria-label={`${resource.rating} of 3 stars`}>
+                                {"★".repeat(resource.rating)}
+                              </span>
+                            )}
+                            {group.kinds.length > 1 && (
+                              <span class="resource-kind-tag">{resource.kind}</span>
+                            )}
+                            {resource.meta && <span class="resource-meta">{resource.meta}</span>}
+                          </div>
+                          {resource.note && <p>{resource.note}</p>}
+                        </li>
+                      ))
+                    }
+                  </ul>
+                </div>
+              ))
+            }
           </section>
         );
       })
@@ -432,6 +500,18 @@ const sourceLinks = [
     margin-bottom: 0.85rem;
   }
 
+  .resource-type-group {
+    margin-top: 1.25rem;
+  }
+
+  .resource-type-heading {
+    margin: 0 0 0.3rem;
+    color: var(--quiet);
+    font-family: var(--mono);
+    font-size: 0.82rem;
+    font-weight: 600;
+  }
+
   .prose .bookmark-list,
   .prose .source-list {
     margin: 0;
@@ -461,8 +541,7 @@ const sourceLinks = [
     flex-wrap: wrap;
   }
 
-  .resource-kind {
-    flex: 0 0 5.3rem;
+  .resource-kind-tag {
     color: var(--quiet);
     font-family: var(--mono);
     font-size: 0.74rem;
@@ -485,7 +564,7 @@ const sourceLinks = [
 
   .bookmark-list p {
     margin-top: 0.28rem;
-    margin-left: 5.85rem;
+    margin-left: 0;
     color: var(--muted);
     font-size: 0.94rem;
     line-height: 1.5;
@@ -504,10 +583,6 @@ const sourceLinks = [
     .resource-line {
       display: grid;
       gap: 0.15rem;
-    }
-
-    .resource-kind {
-      flex-basis: auto;
     }
 
     .bookmark-list p {
