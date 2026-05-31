@@ -51,6 +51,40 @@ const resourceTypeGroups = [
 
 const sections: ResourceSection[] = [
   {
+    title: "Optimization",
+    intro: "Convex optimization, numerical optimization, and gradient-method references.",
+    resources: [
+      {
+        kind: "Course",
+        title: "Convex Optimization: Fall 2019",
+        href: "https://www.stat.cmu.edu/~ryantibs/convexopt/",
+        meta: "CMU",
+        note: "CMU optimization course with slides, scribed notes, and homework on convexity, duality, first-order, proximal, Newton, ADMM, Frank-Wolfe, and stochastic methods.",
+      },
+      {
+        kind: "PDF",
+        title: "Handbook of Convergence Theorems for (Stochastic) Gradient Methods",
+        href: "https://gowerrobert.github.io/pdf/M2_statistique_optimisation/grad_conv.pdf",
+        meta: "Guillaume Garrigos and Robert M. Gower",
+        note: "Convergence proofs for gradient descent, SGD, mini-batching, momentum, subgradient, and proximal methods.",
+      },
+      {
+        kind: "Article",
+        title: "BFGS in a Nutshell: An Introduction to Quasi-Newton Methods",
+        href: "https://towardsdatascience.com/bfgs-in-a-nutshell-an-introduction-to-quasi-newton-methods-21b0e13ee504/",
+        meta: "Towards Data Science",
+        note: "Accessible introduction to quasi-Newton methods and the BFGS inverse-Hessian update.",
+      },
+      {
+        kind: "Video",
+        title: "凸优化",
+        href: "https://www.bilibili.com/video/BV1Jt411p7jE/?p=2&share_source=copy_web&vd_source=9471c7cd3fca9ffedd9167aefed57c6d",
+        meta: "中科大",
+        note: "Chinese video course on convex optimization foundations, convex analysis, duality, and standard algorithmic topics.",
+      },
+    ],
+  },
+  {
     title: "Statistics & Probability",
     intro: "Core statistics and probability references, with the PSU course pages kept as friendly entry points.",
     resources: [
@@ -226,7 +260,7 @@ const sections: ResourceSection[] = [
     ],
   },
   {
-    title: "Mathematics & Optimization",
+    title: "Mathematics",
     resources: [
       {
         kind: "Video",
@@ -262,34 +296,6 @@ const sections: ResourceSection[] = [
         href: "https://www.wiley-vch.de/de/fachgebiete/mathematik-und-statistik/real-analysis-978-0-471-31716-6",
         meta: "Gerald B. Folland",
         note: "Graduate real analysis reference covering measure, integration, signed measures, functional analysis, Hilbert spaces, and Fourier analysis.",
-      },
-      {
-        kind: "Course",
-        title: "Convex Optimization: Fall 2019",
-        href: "https://www.stat.cmu.edu/~ryantibs/convexopt/",
-        meta: "CMU",
-        note: "CMU optimization course with slides, scribed notes, and homework on convexity, duality, first-order, proximal, Newton, ADMM, Frank-Wolfe, and stochastic methods.",
-      },
-      {
-        kind: "PDF",
-        title: "Handbook of Convergence Theorems for (Stochastic) Gradient Methods",
-        href: "https://gowerrobert.github.io/pdf/M2_statistique_optimisation/grad_conv.pdf",
-        meta: "Guillaume Garrigos and Robert M. Gower",
-        note: "Convergence proofs for gradient descent, SGD, mini-batching, momentum, subgradient, and proximal methods.",
-      },
-      {
-        kind: "Article",
-        title: "BFGS in a Nutshell: An Introduction to Quasi-Newton Methods",
-        href: "https://towardsdatascience.com/bfgs-in-a-nutshell-an-introduction-to-quasi-newton-methods-21b0e13ee504/",
-        meta: "Towards Data Science",
-        note: "Accessible introduction to quasi-Newton methods and the BFGS inverse-Hessian update.",
-      },
-      {
-        kind: "Video",
-        title: "凸优化",
-        href: "https://www.bilibili.com/video/BV1Jt411p7jE/?p=2&share_source=copy_web&vd_source=9471c7cd3fca9ffedd9167aefed57c6d",
-        meta: "中科大",
-        note: "Chinese video course on convex optimization foundations, convex analysis, duality, and standard algorithmic topics.",
       },
     ],
   },
