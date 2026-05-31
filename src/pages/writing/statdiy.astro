@@ -58,6 +58,7 @@ const sections: ResourceSection[] = [
         kind: "Book",
         title: "Introduction to Probability, Statistics, and Random Processes",
         href: "https://www.probabilitycourse.com",
+        meta: "Hossein Pishro-Nik",
         note: "Open textbook covering probability axioms, random variables, limit theorems, mathematical statistics, random processes, and simulation.",
       },
       {
@@ -85,13 +86,15 @@ const sections: ResourceSection[] = [
       {
         kind: "Book",
         title: "Causal Inference: The Mixtape",
+        href: "https://mixtape.scunning.com/",
         meta: "Scott Cunningham",
         note: "Applied causal inference handbook built around DAGs, potential outcomes, DiD, IV, RDD, matching, and synthetic control.",
       },
       {
         kind: "Book",
         title: "Mathematical Statistics and Data Analysis",
-        meta: "3rd edition",
+        href: "https://www.cengage.com/c/mathematical-statistics-and-data-analysis-3e-rice/9780534399429",
+        meta: "John A. Rice, 3rd edition",
         note: "Broad mathematical statistics text connecting probability models, estimation, testing, regression, ANOVA, and data analysis examples.",
       },
       {
@@ -104,20 +107,16 @@ const sections: ResourceSection[] = [
       {
         kind: "Book",
         title: "Probability: Theory and Examples",
+        href: "https://sites.math.duke.edu/~rtd/PTE/pte.html",
         meta: "Rick Durrett",
         note: "Rigorous graduate probability text for measure theory, independence, convergence, laws of large numbers, CLT, martingales, and Markov chains.",
       },
       {
         kind: "Book",
         title: "Knowing the Odds: An Introduction to Probability",
+        href: "https://bookstore.ams.org/gsm-139/",
         meta: "John B. Walsh",
         note: "Probability foundations with an unusually friendly path into sigma-algebras, conditioning, independence, and convergence.",
-      },
-      {
-        kind: "Book",
-        title: "高等数理统计",
-        meta: "茆诗松 / 王静龙 / 濮晓龙",
-        note: "Chinese mathematical statistics text for estimation, hypothesis testing, linear models, asymptotics, and multivariate foundations.",
       },
       {
         kind: "Reference",
@@ -128,6 +127,7 @@ const sections: ResourceSection[] = [
       {
         kind: "Book",
         title: "A Probability Path",
+        href: "https://link.springer.com/book/10.1007/978-0-8176-8409-9",
         meta: "Sidney I. Resnick",
         note: "Measure-theoretic probability path through distributions, expectation, independence, convergence, laws of large numbers, and CLT.",
       },
@@ -155,6 +155,7 @@ const sections: ResourceSection[] = [
         kind: "Book",
         title: "The Elements of Statistical Learning",
         href: "https://hastie.su.domains/ElemStatLearn/",
+        meta: "Trevor Hastie, Robert Tibshirani, and Jerome Friedman",
         note: "Classic statistical learning reference for supervised and unsupervised methods, regularization, trees, boosting, SVMs, and model assessment.",
       },
       {
@@ -178,11 +179,6 @@ const sections: ResourceSection[] = [
         meta: "张颢",
         note: "Signal-processing route into statistical learning, spectral methods, filtering, and structured data representations.",
       },
-      {
-        kind: "Book",
-        title: "机器学习实战：基于 Scikit-Learn",
-        note: "Hands-on machine learning practice with scikit-learn workflows for preprocessing, model fitting, evaluation, and tuning.",
-      },
     ],
   },
   {
@@ -198,6 +194,7 @@ const sections: ResourceSection[] = [
       {
         kind: "Book",
         title: "Natural Language Processing with Transformers",
+        href: "https://www.oreilly.com/library/view/natural-language-processing/9781098136789/",
         meta: "Lewis Tunstall, Leandro von Werra, Thomas Wolf",
         note: "Practical transformer NLP book covering tokenizers, Hugging Face workflows, fine-tuning, datasets, and deployment patterns.",
       },
@@ -241,24 +238,28 @@ const sections: ResourceSection[] = [
       {
         kind: "Book",
         title: "Mathematical Analysis",
+        href: "https://link.springer.com/book/10.1007/978-3-662-48792-1",
         meta: "V. A. Zorich",
         note: "Two-volume analysis reference with rigorous calculus, topology of Euclidean spaces, differentiation, integration, series, and manifolds.",
       },
       {
         kind: "Book",
         title: "Principles of Mathematical Analysis",
+        href: "https://campusstore.miamioh.edu/principles-mathematical-analysis-3rd/bk/9780070542358",
         meta: "Walter Rudin",
         note: "Canonical compact real-analysis text for metric spaces, sequences, continuity, differentiation, Riemann-Stieltjes integration, and function sequences.",
       },
       {
         kind: "Book",
         title: "Numerical Analysis",
+        href: "https://www.pearson.com/en-us/subject-catalog/p/numerical-analysis/P200000006340/9780134696454",
         meta: "Timothy Sauer",
         note: "Computational mathematics text for error analysis, nonlinear equations, linear systems, interpolation, integration, ODEs, and eigenvalue problems.",
       },
       {
         kind: "Book",
         title: "Real Analysis: Modern Techniques and Their Applications",
+        href: "https://www.wiley-vch.de/de/fachgebiete/mathematik-und-statistik/real-analysis-978-0-471-31716-6",
         meta: "Gerald B. Folland",
         note: "Graduate real analysis reference covering measure, integration, signed measures, functional analysis, Hilbert spaces, and Fourier analysis.",
       },
@@ -299,21 +300,28 @@ const sections: ResourceSection[] = [
       {
         kind: "Book",
         title: "C Primer Plus",
+        href: "https://www.informit.com/store/c-primer-plus-9780321928429",
+        meta: "Stephen Prata",
         note: "Comprehensive C programming book for syntax, pointers, memory, arrays, structs, I/O, and systems-level basics.",
       },
       {
         kind: "Book",
         title: "鸟哥的 Linux 私房菜",
+        href: "https://linux.vbird.org/",
+        meta: "鸟哥",
         note: "Practical Linux reference for shell usage, filesystem layout, permissions, networking, process management, and server administration.",
       },
       {
         kind: "Book",
         title: "Linux 就该这么学",
+        href: "https://www.linuxprobe.com/intro",
+        meta: "刘遄",
         note: "Applied Linux administration guide focused on command-line workflows, services, networking, storage, and deployment tasks.",
       },
       {
         kind: "Book",
         title: "Introduction to Computing Systems: From Bits and Gates to C and Beyond",
+        href: "https://www.mheducation.com/highered/product/introduction-to-computing-systems-from-bits-and-gates-to-c-c%252B%252B-and-beyond-patt.html",
         meta: "Yale N. Patt and Sanjay J. Patel",
         note: "Bottom-up systems text connecting bits, logic gates, machine architecture, assembly, C, memory, and OS-level abstractions.",
       },
@@ -325,6 +333,8 @@ const sections: ResourceSection[] = [
       {
         kind: "Book",
         title: "Science Research Writing for Non-Native Speakers of English",
+        href: "https://books.google.com/books?id=b0y7CgAAQBAJ",
+        meta: "Hilary Glasman-Deal",
         note: "Genre-based academic writing guide for non-native English speakers, organized around the sections of scientific papers.",
       },
     ],
@@ -457,8 +467,11 @@ const groupResourcesByType = (resources: Resource[]): ResourceTypeGroup[] => {
             {section.intro && <p class="resource-section-intro">{section.intro}</p>}
             {
               groupResourcesByType(section.resources).map((group) => (
-                <div class="resource-type-group">
-                  <h3 class="resource-type-heading">{group.title}</h3>
+                <details class="resource-type-group" open>
+                  <summary class="resource-type-heading">
+                    <span>{group.title}</span>
+                    <span class="resource-type-count">{group.resources.length}</span>
+                  </summary>
                   <ul class="bookmark-list">
                     {
                       group.resources.map((resource) => (
@@ -484,7 +497,7 @@ const groupResourcesByType = (resources: Resource[]): ResourceTypeGroup[] => {
                       ))
                     }
                   </ul>
-                </div>
+                </details>
               ))
             }
           </section>
@@ -540,11 +553,40 @@ const groupResourcesByType = (resources: Resource[]): ResourceTypeGroup[] => {
   }
 
   .resource-type-heading {
-    margin: 0 0 0.3rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    width: fit-content;
+    margin: 0 0 0.38rem;
+    color: var(--text);
+    cursor: pointer;
+    font-family: var(--mono);
+    font-size: 0.98rem;
+    font-weight: 700;
+    list-style: none;
+    user-select: none;
+  }
+
+  .resource-type-heading::before {
+    content: "+";
+    color: var(--quiet);
+    font-weight: 700;
+  }
+
+  .resource-type-group[open] > .resource-type-heading::before {
+    content: "-";
+  }
+
+  .resource-type-heading::marker,
+  .resource-type-heading::-webkit-details-marker {
+    display: none;
+  }
+
+  .resource-type-count {
     color: var(--quiet);
     font-family: var(--mono);
-    font-size: 0.82rem;
-    font-weight: 600;
+    font-size: 0.78rem;
+    font-weight: 500;
   }
 
   .prose .bookmark-list,
