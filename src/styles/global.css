@@ -280,20 +280,51 @@ h3 {
 
 .note-panel {
   display: grid;
-  grid-template-columns: minmax(0, 1.1fr) minmax(220px, 0.9fr);
+  grid-template-columns: minmax(180px, 0.34fr) minmax(0, 1fr);
   gap: 2rem;
   border-top: 1px solid var(--border-strong);
   padding-top: 1.1rem;
 }
 
-.note-panel ul {
-  margin: 0;
-  padding-left: 1.1rem;
-  color: var(--muted);
+.note-panel-heading {
+  align-content: start;
+  display: grid;
+  gap: 0.45rem;
 }
 
-.note-panel li + li {
-  margin-top: 0.35rem;
+.note-panel-heading .eyebrow {
+  margin-bottom: 0;
+}
+
+.note-updates {
+  display: grid;
+  gap: 1rem;
+  margin: 0;
+  padding-left: 0;
+  list-style: none;
+}
+
+.note-updates li {
+  border-top: 1px solid var(--border);
+  padding-top: 0.85rem;
+}
+
+.note-updates li:first-child {
+  border-top: 0;
+  padding-top: 0;
+}
+
+.note-updates time {
+  display: block;
+  margin-bottom: 0.15rem;
+  color: var(--quiet);
+  font-family: var(--mono);
+  font-size: 0.76rem;
+}
+
+.note-updates p {
+  margin-top: 0.3rem;
+  color: var(--muted);
 }
 
 .plain-list {

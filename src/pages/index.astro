@@ -1,6 +1,9 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+import { getBYNotesUpdates } from "../data/bynotes";
 import { archive, site } from "../data/site";
+
+const bynotesUpdates = await getBYNotesUpdates();
 ---
 
 <BaseLayout current="home">
@@ -25,23 +28,23 @@ import { archive, site } from "../data/site";
     <div class="section-body">
       <h2 id="notes-title">BYNotes</h2>
       <div class="note-panel">
-        <div>
-          <p class="section-intro">
-            BYNotes is the maintained Quartz notebook for longer study notes.
-            The root homepage links into it without absorbing its structure.
-          </p>
-          <div class="actions">
-            <a class="text-link" href={site.notes}>Open BYNotes</a>
-            <a class="text-link secondary" href="https://github.com/By-Xin/BYNotes">
-              Repository
-            </a>
-          </div>
+        <div class="note-panel-heading">
+          <p class="eyebrow">Curated notes</p>
+          <h3 id="bynotes-recent-updates">Recent Updates</h3>
         </div>
-        <ul>
-          <li>Convex Optimization CMU</li>
-          <li>Online Learning</li>
-          <li>Learning theory and statistical learning notes</li>
-        </ul>
+        <ol class="note-updates" aria-labelledby="bynotes-recent-updates">
+          {
+            bynotesUpdates.map((item) => (
+              <li>
+                <time datetime={item.date}>
+                  {item.displayDate ?? item.date}
+                </time>
+                <a class="entry-title" href={item.href}>{item.title}</a>
+                <p>{item.summary}</p>
+              </li>
+            ))
+          }
+        </ol>
       </div>
     </div>
   </section>
