@@ -70,7 +70,7 @@ export const archive = [
   {
     title: "Farewell, Ryuichi Sakamoto",
     href: "/writing/farewell-ryuichi-sakamoto/",
-    date: "2023-06-27",
+    date: "2023-03-28",
     description: "A short archived fragment from the previous Hexo site.",
   },
 ];

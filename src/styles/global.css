@@ -227,6 +227,10 @@ h3 {
   gap: 1.6rem;
 }
 
+.section-title-link {
+  color: inherit;
+}
+
 .section-intro {
   max-width: 680px;
   color: var(--muted);

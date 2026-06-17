@@ -26,7 +26,9 @@ const bynotesUpdates = await getBYNotesUpdates();
   <section class="section" aria-labelledby="notes-title">
     <p class="section-kicker">01 / notes</p>
     <div class="section-body">
-      <h2 id="notes-title">BYNotes</h2>
+      <h2 id="notes-title">
+        <a class="section-title-link" href={site.notes}>Study Notes</a>
+      </h2>
       <div class="note-panel">
         <div class="note-panel-heading">
           <p class="eyebrow">Curated notes</p>
@@ -52,18 +54,23 @@ const bynotesUpdates = await getBYNotesUpdates();
   <section class="section" aria-labelledby="projects-title">
     <p class="section-kicker">02 / work</p>
     <div class="section-body">
-      <h2 id="projects-title">Projects and Publications</h2>
+      <h2 id="projects-title">
+        <a class="section-title-link" href="/projects/">
+          Projects and Publications
+        </a>
+      </h2>
       <p class="section-intro">
         Research projects and publications will be listed here.
       </p>
-      <a class="text-link secondary" href="/projects/">Projects index</a>
     </div>
   </section>
 
   <section class="section" aria-labelledby="writing-title">
     <p class="section-kicker">03 / writing</p>
     <div class="section-body">
-      <h2 id="writing-title">Writing and Archive</h2>
+      <h2 id="writing-title">
+        <a class="section-title-link" href="/writing/">Writing and Archive</a>
+      </h2>
       <div class="entry-list">
         {
           archive.map((item) => (
@@ -77,7 +84,6 @@ const bynotesUpdates = await getBYNotesUpdates();
           ))
         }
       </div>
-      <a class="text-link secondary" href="/writing/">Writing index</a>
     </div>
   </section>
 </BaseLayout>
