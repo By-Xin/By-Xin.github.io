@@ -1,7 +1,14 @@
 {
-  "generatedAt": "2026-06-16T00:00:00.000Z",
+  "generatedAt": "2026-06-25T00:00:00.000Z",
   "source": "https://by-xin.github.io/BYNotes/",
   "updates": [
+    {
+      "date": "2026-06-25",
+      "displayDate": "June 25, 2026",
+      "title": "GLinSAT differentiable constraint layer reading",
+      "href": "./OptimizationReadings/DecisionFocusedLearning/GLinSAT-General-Linear-Satisfiability-Neural-Network-Layer",
+      "summary": "Added GLinSAT to Decision-Focused Learning, covering entropy-regularized linear projection, smooth dual reformulation, accelerated primal-dual optimization, and implicit differentiation. The note is published while experiments and implementation details continue to be expanded."
+    },
     {
       "date": "2026-06-16",
       "displayDate": "June 16, 2026",
@@ -15,13 +22,6 @@
       "title": "IPMO decision-focused portfolio reading",
       "href": "./OptimizationReadings/DecisionFocusedLearning/IPMO-Integrated-Prediction-and-Multi-period-Portfolio-Optimization",
       "summary": "Added IPMO: Integrated Prediction and Multi-period Portfolio Optimization to Decision-Focused Learning, covering multi-period portfolio optimization, MPC, mirror-descent fixed-point differentiation, and decision-focused training."
-    },
-    {
-      "date": "2026-06-09",
-      "displayDate": "June 9, 2026",
-      "title": "Convex optimization coordinate descent",
-      "href": "./ConvexOptimization/20.Coordinate-Descent",
-      "summary": "Added Lecture 20 - Coordinate Descent to Convex Optimization (CMU, 10-725), covering coordinatewise minima, block coordinate descent algorithm, and proximal update variants."
     }
   ]
 }

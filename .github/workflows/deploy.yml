@@ -6,6 +6,9 @@ on:
   workflow_dispatch:
   repository_dispatch:
     types: [bynotes-updated]
+  schedule:
+    - cron: "17 9 * * 1"
+      timezone: "Asia/Singapore"
 
 permissions:
   contents: read
