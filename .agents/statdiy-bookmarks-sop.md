@@ -66,9 +66,12 @@ the words in the title.
 
 Current major sections:
 
-- `Optimization & Numerical Computing`: optimization, numerical optimization,
-  scientific computing, gradient methods, convex optimization, large-scale
-  optimization, numerical/scientific computing courses.
+- `Optimization`: optimization theory, convex optimization, large-scale
+  optimization, optimization for machine learning, gradient methods, and
+  optimization articles/PDFs/videos.
+- `Numerical Computing & Scientific Programming`: numerical methods,
+  scientific computing, computational thinking, Julia/Pluto resources,
+  scientific Python, and numerical/scientific programming courses.
 - `Statistics & Probability`: probability, mathematical statistics,
   computational statistics when the course is primarily statistical computing.
 - `Machine Learning & Data Mining`: statistical learning, data mining, learning
@@ -85,12 +88,11 @@ Current major sections:
 Recent placement decisions to preserve:
 
 - MIT `Introduction to Computational Thinking` belongs in
-  `Optimization & Numerical Computing`, because the user wanted the section to
-  include numerical computing.
+  `Numerical Computing & Scientific Programming`.
 - Berkeley `Understanding Large Language Models: Foundations and Safety`
   belongs in `Deep Learning, NLP & RL`.
-- BFGS, NAG, gradient convergence, UCLA ECE236C, Princeton ELE522, and CMU
-  Convex Optimization belong in `Optimization & Numerical Computing`.
+- BFGS, NAG, gradient convergence, UCLA ECE236C, Princeton ELE539/COS512, UPenn
+  STAT9910-303, and CMU Convex Optimization belong in `Optimization`.
 
 ## Adding A New Resource
 
