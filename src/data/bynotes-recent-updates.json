@@ -1,27 +1,27 @@
 {
-  "generatedAt": "2026-06-25T00:00:00.000Z",
-  "source": "https://by-xin.github.io/BYNotes/",
+  "generatedAt": "2026-07-05T16:18:40.545Z",
+  "source": "content/index.md",
   "updates": [
     {
-      "date": "2026-06-25",
-      "displayDate": "June 25, 2026",
-      "title": "GLinSAT differentiable constraint layer reading",
-      "href": "./OptimizationReadings/DecisionFocusedLearning/GLinSAT-General-Linear-Satisfiability-Neural-Network-Layer",
-      "summary": "Added GLinSAT to Decision-Focused Learning, covering entropy-regularized linear projection, smooth dual reformulation, accelerated primal-dual optimization, and implicit differentiation. The note is published while experiments and implementation details continue to be expanded."
+      "date": "2026-07-02",
+      "displayDate": "July 2, 2026",
+      "title": "Learning roadmap notebook and stochastic bilevel syllabus",
+      "href": "./LearningRoadmaps/",
+      "summary": "Added Learning Roadmaps in Odds & Ends, with a Stochastic Programming and Bilevel Optimization Roadmap covering stochastic programming, multistage stochastic programming, bilevel optimization, conditional stochastic optimization, MLMC, and biased stochastic oracle methods."
     },
     {
-      "date": "2026-06-16",
-      "displayDate": "June 16, 2026",
+      "date": "2026-07-01",
+      "displayDate": "July 1, 2026",
+      "title": "Convex optimization Frank-Wolfe method notes",
+      "href": "./ConvexOptimization/23.Frank-Wolfe-Method",
+      "summary": "Added Lecture 23 - Frank-Wolfe Method in Convex Optimization (CMU, 10-725), covering the projection-free conditional gradient update, the Frank-Wolfe duality gap, norm-constraint and trace-norm closed forms, the curvature-based convergence rate, affine invariance, inexact updates, line search, fully corrective and away-step variants, and path following."
+    },
+    {
+      "date": "2026-06-30",
+      "displayDate": "June 30, 2026",
       "title": "Convex optimization dual decomposition and ADMM",
-      "href": "./ConvexOptimization/21.Dual-Decomposition",
-      "summary": "Added Lecture 21 - Dual Decomposition to Convex Optimization (CMU, 10-725), covering Fenchel conjugates, dual gradient ascent, distributed dual decomposition, augmented Lagrangian methods, ADMM, and alternating projections."
-    },
-    {
-      "date": "2026-06-13",
-      "displayDate": "June 13, 2026",
-      "title": "IPMO decision-focused portfolio reading",
-      "href": "./OptimizationReadings/DecisionFocusedLearning/IPMO-Integrated-Prediction-and-Multi-period-Portfolio-Optimization",
-      "summary": "Added IPMO: Integrated Prediction and Multi-period Portfolio Optimization to Decision-Focused Learning, covering multi-period portfolio optimization, MPC, mirror-descent fixed-point differentiation, and decision-focused training."
+      "href": "./ConvexOptimization/21-22.Dual-Decomposition",
+      "summary": "Updated Lecture 21-22 - Dual Decomposition and ADMM in Convex Optimization (CMU, 10-725), adding augmented Lagrangian methods, ADMM, scaled ADMM, alternating projections, group lasso, sparse-plus-low-rank decomposition, consensus ADMM, and decomposition design notes."
     }
   ]
 }
