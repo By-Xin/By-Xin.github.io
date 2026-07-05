@@ -10,7 +10,7 @@
   --accent-soft: #84a59d;
   --highlight: rgba(132, 165, 157, 0.16);
   --max: 980px;
-  --sans: "Source Sans 3", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --sans: "Source Sans 3", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   --display: "Schibsted Grotesk", var(--sans);
   --mono: "IBM Plex Mono", "SFMono-Regular", Consolas, monospace;
 }

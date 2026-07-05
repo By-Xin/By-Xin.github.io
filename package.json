@@ -10,6 +10,9 @@
   },
   "devDependencies": {
     "@astrojs/sitemap": "^3.7.3",
+    "@fontsource/ibm-plex-mono": "^5.2.7",
+    "@fontsource/schibsted-grotesk": "^5.2.8",
+    "@fontsource/source-sans-3": "^5.2.9",
     "astro": "^6.3.7",
     "typescript": "^6.0.3"
   }
