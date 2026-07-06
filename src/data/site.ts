@@ -46,31 +46,5 @@ export const projects = [
   },
 ];
 
-export const archive = [
-  {
-    title: "东风何处是人间 / Where Does the East Wind Find the Earth?",
-    href: "/writing/east-wind/",
-    date: "2026-05-24",
-    description:
-      "以《东风何处是人间》为灵感起点，整理《全宋词》的词频、词群与作品距离。",
-  },
-  {
-    title: "Undergraduate Thesis Acknowledgement",
-    href: "/writing/undergraduate-thesis-acknowledgment/",
-    date: "2024-04-18",
-    description: "2024 年 4 月 18 日写于大学路，华灯初上。",
-  },
-  {
-    title: "STATDIY bookmarks",
-    href: "/writing/statdiy/",
-    date: "2023-06-27",
-    description:
-      "A living bookmark shelf for statistics, data science, mathematics, systems, and academic writing.",
-  },
-  {
-    title: "Farewell, Ryuichi Sakamoto",
-    href: "/writing/farewell-ryuichi-sakamoto/",
-    date: "2023-03-28",
-    description: "A short archived fragment from the previous Hexo site.",
-  },
-];
+// Writing entries now live in src/data/writing.ts (essays content collection
+// + special pages).

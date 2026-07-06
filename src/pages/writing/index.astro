@@ -1,0 +1,136 @@
+---
+// Writing index: the literary corner of the site — CJK serif, year-grouped.
+import "@fontsource/noto-serif-sc/400.css";
+import "@fontsource/noto-serif-sc/700.css";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { getWritingEntries, isoDate } from "../../data/writing";
+
+const entries = await getWritingEntries();
+const years = [...new Set(entries.map((entry) => entry.date.getUTCFullYear()))];
+const byYear = years.map((year) => ({
+  year,
+  items: entries.filter((entry) => entry.date.getUTCFullYear() === year),
+}));
+---
+
+<BaseLayout
+  current="writing"
+  title="Writing"
+  description="Personal, non-academic writing: essays, fragments, and bookmark shelves."
+>
+  <section class="writing-index" aria-labelledby="writing-title">
+    <header class="writing-head">
+      <p class="eyebrow">writing · 随笔</p>
+      <h1 id="writing-title">Writing</h1>
+      <p class="writing-lede">
+        Personal, non-academic writing — essays, fragments, and a few bookmark
+        shelves. Longer technical notes live in <a href="/BYNotes/">BYNotes</a>.
+      </p>
+    </header>
+    {
+      byYear.map(({ year, items }) => (
+        <section class="year-group" aria-label={String(year)}>
+          <h2 class="year">{year}</h2>
+          <div class="year-entries">
+            {items.map((item) => (
+              <article class="w-entry">
+                <a class="w-title" href={item.href}>
+                  {item.title}
+                </a>
+                {item.description && <p class="w-desc">{item.description}</p>}
+                <time class="w-date" datetime={isoDate(item.date)}>
+                  {isoDate(item.date)}
+                </time>
+              </article>
+            ))}
+          </div>
+        </section>
+      ))
+    }
+  </section>
+</BaseLayout>
+
+<style>
+  .writing-index {
+    --serif: Georgia, "Noto Serif SC", "Songti SC", "SimSun", serif;
+    --essay-warm: #9c5333;
+    max-width: 640px;
+    margin-inline: auto;
+  }
+
+  .writing-head {
+    padding-bottom: 2.4rem;
+  }
+
+  .writing-head h1 {
+    font-family: var(--serif);
+    font-size: clamp(1.7rem, 4vw, 2.2rem);
+    font-weight: 700;
+  }
+
+  .writing-lede {
+    margin-top: 1rem;
+    max-width: 34em;
+    color: var(--muted);
+    font-family: var(--serif);
+    font-size: 1.02rem;
+    line-height: 1.9;
+  }
+
+  .year-group {
+    display: grid;
+    grid-template-columns: 90px minmax(0, 1fr);
+    gap: 1.6rem;
+    padding-top: 1.9rem;
+    border-top: 1px solid var(--border);
+  }
+
+  .year {
+    padding-top: 0.3rem;
+    color: var(--essay-warm);
+    font-family: var(--mono);
+    font-size: 0.88rem;
+    font-weight: 500;
+  }
+
+  .w-entry {
+    padding-bottom: 1.8rem;
+  }
+
+  .w-title {
+    color: var(--text);
+    font-family: var(--serif);
+    font-size: 1.12rem;
+    font-weight: 700;
+    line-height: 1.6;
+  }
+
+  .w-title:hover {
+    color: var(--essay-warm);
+    text-decoration: none;
+  }
+
+  .w-desc {
+    margin-top: 0.4rem;
+    color: var(--muted);
+    font-family: var(--serif);
+    font-size: 0.98rem;
+    line-height: 1.85;
+  }
+
+  .w-date {
+    display: block;
+    margin-top: 0.45rem;
+    color: var(--quiet);
+    font-family: var(--mono);
+    font-size: 0.74rem;
+    letter-spacing: 0.04em;
+  }
+
+  @media (max-width: 760px) {
+    .year-group {
+      grid-template-columns: 1fr;
+      gap: 0.9rem;
+    }
+  }
+</style>

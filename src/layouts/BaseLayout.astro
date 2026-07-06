@@ -15,12 +15,14 @@ type Props = {
   title?: string;
   description?: string;
   current?: "home" | "about" | "projects" | "writing";
+  lang?: string;
 };
 
 const {
   title = site.title,
   description = site.description,
   current = "home",
+  lang = "en",
 } = Astro.props;
 
 const pageTitle = title === site.title ? site.title : `${title} | ${site.title}`;
@@ -34,7 +36,7 @@ const nav = [
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang={lang}>
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -48,6 +50,12 @@ const nav = [
     <meta name="twitter:card" content="summary_large_image" />
     <link rel="canonical" href={Astro.url.href} />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link
+      rel="alternate"
+      type="application/rss+xml"
+      title="Writing — XIN Baiying"
+      href="/writing/rss.xml"
+    />
     <title>{pageTitle}</title>
   </head>
   <body>

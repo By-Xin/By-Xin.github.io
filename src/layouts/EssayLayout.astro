@@ -1,0 +1,97 @@
+---
+// Reading layout for the Writing space: CJK serif, narrow measure, generous
+// leading. Fonts are self-hosted and loaded only on writing pages.
+import "@fontsource/noto-serif-sc/400.css";
+import "@fontsource/noto-serif-sc/700.css";
+import BaseLayout from "./BaseLayout.astro";
+import { isoDate } from "../data/writing";
+
+type Props = {
+  title: string;
+  description?: string;
+  date: Date;
+  lang: "zh" | "en";
+};
+
+const { title, description = title, date, lang } = Astro.props;
+const htmlLang = lang === "zh" ? "zh-CN" : "en";
+---
+
+<BaseLayout current="writing" title={title} description={description} lang={htmlLang}>
+  <article class="essay" lang={htmlLang}>
+    <a class="back-link" href="/writing/">← Writing</a>
+    <p class="essay-date">{isoDate(date)}</p>
+    <h1>{title}</h1>
+    <div class="essay-body">
+      <slot />
+    </div>
+  </article>
+</BaseLayout>
+
+<style is:global>
+  .essay {
+    --serif: Georgia, "Noto Serif SC", "Songti SC", "SimSun", serif;
+    --essay-warm: #9c5333;
+    max-width: 620px;
+    margin-inline: auto;
+    font-family: var(--serif);
+  }
+
+  .essay .essay-date {
+    margin: 1.5rem 0 0.7rem;
+    color: var(--quiet);
+    font-family: var(--mono);
+    font-size: 0.78rem;
+    letter-spacing: 0.05em;
+  }
+
+  .essay h1 {
+    font-family: inherit;
+    font-size: clamp(1.5rem, 3.4vw, 1.95rem);
+    font-weight: 700;
+    line-height: 1.45;
+    margin-bottom: 2.2rem;
+  }
+
+  .essay-body {
+    font-size: 1.05rem;
+    line-height: 2.05;
+    color: var(--text);
+  }
+
+  .essay[lang="zh-CN"] .essay-body {
+    text-align: justify;
+  }
+
+  .essay-body p {
+    margin: 0 0 1.35em;
+  }
+
+  .essay-body a {
+    color: var(--essay-warm);
+    text-decoration: underline;
+    text-decoration-color: color-mix(in srgb, var(--essay-warm) 40%, transparent);
+    text-underline-offset: 0.22em;
+  }
+
+  .essay-body blockquote {
+    margin: 1.6em 0;
+    padding-left: 1em;
+    border-left: 2px solid var(--border-strong);
+    color: var(--muted);
+  }
+
+  .essay-body hr {
+    width: 38%;
+    margin: 2.4em auto;
+    border: 0;
+    border-top: 1px solid var(--border);
+  }
+
+  @media (max-width: 760px) {
+    .essay-body {
+      font-size: 1rem;
+      line-height: 1.95;
+    }
+  }
+</style>

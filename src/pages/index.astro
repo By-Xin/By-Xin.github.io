@@ -1,9 +1,11 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import { getBYNotesUpdates } from "../data/bynotes";
-import { archive, site } from "../data/site";
+import { site } from "../data/site";
+import { getWritingEntries, isoDate } from "../data/writing";
 
 const bynotesUpdates = await getBYNotesUpdates();
+const writingEntries = (await getWritingEntries()).slice(0, 4);
 ---
 
 <BaseLayout current="home">
@@ -73,13 +75,13 @@ const bynotesUpdates = await getBYNotesUpdates();
       </h2>
       <div class="entry-list">
         {
-          archive.map((item) => (
+          writingEntries.map((item) => (
             <article class="entry">
               <div>
                 <a class="entry-title" href={item.href}>{item.title}</a>
                 <p>{item.description}</p>
               </div>
-              <span class="entry-meta">{item.date}</span>
+              <span class="entry-meta">{isoDate(item.date)}</span>
             </article>
           ))
         }
