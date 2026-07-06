@@ -1,30 +1,31 @@
 ---
-// Writing index: the literary corner of the site — CJK serif, year-grouped.
+// Writing index: the literary corner of the site — CJK serif, year-grouped
+// essays, with curated collections at the bottom.
 import "@fontsource/noto-serif-sc/400.css";
 import "@fontsource/noto-serif-sc/700.css";
 import BaseLayout from "../../layouts/BaseLayout.astro";
-import { getWritingEntries, isoDate } from "../../data/writing";
+import { collections, getEssayEntries, isoDate } from "../../data/writing";
 
-const entries = await getWritingEntries();
-const years = [...new Set(entries.map((entry) => entry.date.getUTCFullYear()))];
+const essays = await getEssayEntries();
+const years = [...new Set(essays.map((entry) => entry.date.getUTCFullYear()))];
 const byYear = years.map((year) => ({
   year,
-  items: entries.filter((entry) => entry.date.getUTCFullYear() === year),
+  items: essays.filter((entry) => entry.date.getUTCFullYear() === year),
 }));
 ---
 
 <BaseLayout
   current="writing"
   title="Writing"
-  description="Personal, non-academic writing: essays, fragments, and bookmark shelves."
+  description="Personal, non-academic writing: essays, fragments, and collections."
 >
   <section class="writing-index" aria-labelledby="writing-title">
     <header class="writing-head">
       <p class="eyebrow">writing · 随笔</p>
       <h1 id="writing-title">Writing</h1>
       <p class="writing-lede">
-        Personal, non-academic writing — essays, fragments, and a few bookmark
-        shelves. Longer technical notes live in <a href="/BYNotes/">BYNotes</a>.
+        Personal, non-academic writing — essays and fragments, mostly in
+        Chinese. Longer technical notes live in <a href="/BYNotes/">BYNotes</a>.
       </p>
     </header>
     {
@@ -47,6 +48,21 @@ const byYear = years.map((year) => ({
         </section>
       ))
     }
+    <section class="collections" aria-labelledby="collections-title">
+      <h2 id="collections-title" class="collections-title">Collections · 收藏</h2>
+      <div class="year-entries">
+        {
+          collections.map((item) => (
+            <article class="w-entry">
+              <a class="w-title" href={item.href}>
+                {item.title}
+              </a>
+              {item.description && <p class="w-desc">{item.description}</p>}
+            </article>
+          ))
+        }
+      </div>
+    </section>
   </section>
 </BaseLayout>
 
@@ -124,6 +140,21 @@ const byYear = years.map((year) => ({
     color: var(--quiet);
     font-family: var(--mono);
     font-size: 0.74rem;
+    letter-spacing: 0.04em;
+  }
+
+  .collections {
+    margin-top: 1.2rem;
+    padding-top: 1.9rem;
+    border-top: 1px solid var(--border);
+  }
+
+  .collections-title {
+    margin-bottom: 1.5rem;
+    color: var(--quiet);
+    font-family: var(--mono);
+    font-size: 0.85rem;
+    font-weight: 500;
     letter-spacing: 0.04em;
   }
 

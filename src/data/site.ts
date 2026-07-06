@@ -36,6 +36,7 @@ export const projects = [
     meta: "Research code",
     description:
       "Experiments around retraining and conformal prediction under shift.",
+    group: "research",
   },
   {
     name: "Holder smooth optimization",
@@ -43,6 +44,15 @@ export const projects = [
     meta: "Working notes",
     description:
       "Drafts and notes on smoothing, accelerated methods, and related analysis.",
+    group: "research",
+  },
+  {
+    name: "东风何处是人间 / Where Does the East Wind Find the Earth?",
+    href: "/projects/east-wind/",
+    meta: "Side project",
+    description:
+      "以《东风何处是人间》为灵感起点，整理《全宋词》的词频、词群与作品距离。",
+    group: "side",
   },
 ];
 

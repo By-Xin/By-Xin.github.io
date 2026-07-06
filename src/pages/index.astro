@@ -2,10 +2,8 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 import { getBYNotesUpdates } from "../data/bynotes";
 import { site } from "../data/site";
-import { getWritingEntries, isoDate } from "../data/writing";
 
 const bynotesUpdates = await getBYNotesUpdates();
-const writingEntries = (await getWritingEntries()).slice(0, 4);
 ---
 
 <BaseLayout current="home">
@@ -73,19 +71,10 @@ const writingEntries = (await getWritingEntries()).slice(0, 4);
       <h2 id="writing-title">
         <a class="section-title-link" href="/writing/">Writing and Archive</a>
       </h2>
-      <div class="entry-list">
-        {
-          writingEntries.map((item) => (
-            <article class="entry">
-              <div>
-                <a class="entry-title" href={item.href}>{item.title}</a>
-                <p>{item.description}</p>
-              </div>
-              <span class="entry-meta">{isoDate(item.date)}</span>
-            </article>
-          ))
-        }
-      </div>
+      <p class="section-intro">
+        Personal, non-academic writing — 随笔与断章, mostly in Chinese, with a
+        few collected shelves. Individual pieces live inside the index.
+      </p>
     </div>
   </section>
 </BaseLayout>

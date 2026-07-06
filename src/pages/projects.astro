@@ -1,34 +1,62 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import { projects } from "../data/site";
+
+const groups = [
+  { key: "research", title: "Research" },
+  { key: "side", title: "Side projects" },
+]
+  .map((group) => ({
+    ...group,
+    items: projects.filter((project) => project.group === group.key),
+  }))
+  .filter((group) => group.items.length > 0);
 ---
 
 <BaseLayout
   current="projects"
   title="Projects"
-  description="Research projects, publications, and code."
+  description="Research projects, publications, code, and side projects."
 >
   <section class="section" aria-labelledby="projects-title">
     <p class="section-kicker">projects</p>
     <div class="section-body">
       <h1 id="projects-title">Projects</h1>
       <p class="section-intro">
-        Research projects, publications, and related code.
+        Research projects, publications, and related code — and a few
+        non-academic side projects.
       </p>
-      <div class="entry-list">
-        {
-          projects.map((project) => (
-            <article class="entry">
-              <div>
-                <a class="entry-title" href={project.href}>{project.name}</a>
-                <p>{project.description}</p>
-                {project.repo && <p><a href={project.repo}>Repository</a></p>}
-              </div>
-              <span class="entry-meta">{project.meta}</span>
-            </article>
-          ))
-        }
-      </div>
+      {
+        groups.map((group) => (
+          <section aria-label={group.title}>
+            <h2 class="group-title">{group.title}</h2>
+            <div class="entry-list">
+              {group.items.map((project) => (
+                <article class="entry">
+                  <div>
+                    <a class="entry-title" href={project.href}>{project.name}</a>
+                    <p>{project.description}</p>
+                    {project.repo && <p><a href={project.repo}>Repository</a></p>}
+                  </div>
+                  <span class="entry-meta">{project.meta}</span>
+                </article>
+              ))}
+            </div>
+          </section>
+        ))
+      }
     </div>
   </section>
 </BaseLayout>
+
+<style>
+  .group-title {
+    margin-bottom: 0.7rem;
+    color: var(--quiet);
+    font-family: var(--mono);
+    font-size: 0.82rem;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+</style>

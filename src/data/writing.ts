@@ -7,16 +7,9 @@ export type WritingEntry = {
   description: string;
 };
 
-// Interactive/custom pages that live outside the essays collection but belong
-// in the Writing index.
-export const specialPages: WritingEntry[] = [
-  {
-    title: "东风何处是人间 / Where Does the East Wind Find the Earth?",
-    href: "/writing/east-wind/",
-    date: new Date("2026-05-24"),
-    description:
-      "以《东风何处是人间》为灵感起点，整理《全宋词》的词频、词群与作品距离。",
-  },
+// Curated shelves that are not essays; shown in the Collections section of
+// the Writing index.
+export const collections: WritingEntry[] = [
   {
     title: "STATDIY bookmarks",
     href: "/writing/statdiy/",
@@ -26,18 +19,16 @@ export const specialPages: WritingEntry[] = [
   },
 ];
 
-export async function getWritingEntries(): Promise<WritingEntry[]> {
+export async function getEssayEntries(): Promise<WritingEntry[]> {
   const essays = await getCollection("essays", ({ data }) => !data.draft);
-  const entries: WritingEntry[] = [
-    ...essays.map((essay) => ({
+  return essays
+    .map((essay) => ({
       title: essay.data.title,
       href: `/writing/${essay.id}/`,
       date: essay.data.date,
       description: essay.data.description ?? "",
-    })),
-    ...specialPages,
-  ];
-  return entries.sort((a, b) => b.date.getTime() - a.date.getTime());
+    }))
+    .sort((a, b) => b.date.getTime() - a.date.getTime());
 }
 
 export function isoDate(date: Date): string {
