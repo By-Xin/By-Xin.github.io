@@ -1,44 +1,173 @@
 ---
+// 东风何处是人间 — a self-contained statistical reading of the complete Song Ci
+// corpus. All figures and model outputs on this page are extracted verbatim
+// from the original course notebook; the interactive HF Space is demoted to a
+// footnote link (it is not reachable from mainland China).
+import "@fontsource/noto-serif-sc/400.css";
+import "@fontsource/noto-serif-sc/700.css";
 import BaseLayout from "../../layouts/BaseLayout.astro";
 ---
 
 <BaseLayout
   current="projects"
+  lang="zh-CN"
   title="东风何处是人间 / Where Does the East Wind Find the Earth?"
-  description="以宋词统计阅读为题的中英双语交互项目，追随《东风何处是人间》的问题意识。"
+  description="把《全宋词》两万余首交给统计模型：词频、词向量、文档向量与一个从零训练的字符级 Transformer，看语料如何回答这句题目。"
 >
-  <article class="east-wind" lang="zh-Hans">
+  <article class="east-wind" lang="zh-CN">
     <a class="back-link" href="/projects/">返回项目 / Back to projects</a>
 
     <header class="project-head">
       <p class="section-kicker">宋词统计读本 / Song Ci statistical reading</p>
       <h1>东风何处是人间<br />Where Does the East Wind Find the Earth?</h1>
       <p class="project-credit">
-        灵感来自导师 Yixuan 的
+        灵感来自导师 Yixuan 2011 年的
         <a href="https://yixuan.blog/cn/2011/03/text-mining-of-song-poems/">《东风何处是人间》</a>。
+        这一次，把《全宋词》两万余首整体交给统计模型——词频、词向量、文档向量，
+        以及一个从零训练的字符级 Transformer——看语料自己如何回答这句题目。
         <span>
-          Inspired by Yixuan's 2011 essay on text mining Song Ci.
+          Hand the complete Song Ci corpus to statistical models, and let the
+          corpus answer the question itself.
         </span>
-      </p>
-      <p class="project-actions">
-        <a href="https://byleon-east-wind-songci.hf.space">打开独立 Space / Open Space</a>
-        <a href="https://huggingface.co/spaces/BYLEON/east-wind-songci">查看 Space 仓库 / Space repository</a>
       </p>
     </header>
 
-    <section class="space-section" aria-labelledby="space-title">
-      <div class="section-head">
-        <p class="section-kicker">交互应用 / interactive app</p>
-        <h2 id="space-title">宋词读本<br />Song Ci Reader</h2>
-      </div>
-      <div class="space-frame-wrap">
-        <iframe
-          src="https://byleon-east-wind-songci.hf.space"
-          title="东风何处是人间 Hugging Face Space"
+    <section class="chapter" aria-labelledby="ch1">
+      <p class="section-kicker">壹 / the corpus writes its own title</p>
+      <h2 id="ch1">语料自己写下了标题</h2>
+      <p>
+        统计全宋词中所有两字以上的词，出现次数最多的三个是：<strong>人间</strong>、<strong>何处</strong>、<strong>东风</strong>。
+      </p>
+      <p>
+        也就是说，“东风何处是人间”并不是谁的妙手偶得——它是这部语料用词频亲手拼出来的一句话。
+        两万余首宋词整体上就在反复念叨这三个词：一个地方，一个疑问，一阵风。
+      </p>
+      <figure>
+        <img
+          src="/projects/east-wind/wordcloud-songci.png"
+          alt="全宋词词云：人间、何处、东风三个词占据画面中心"
           loading="lazy"
-          allow="clipboard-read; clipboard-write"
-        ></iframe>
+        />
+        <figcaption>全宋词词云（两字以上、前 40 词）：画面中心正是题目本身。</figcaption>
+      </figure>
+      <p>
+        再看是谁在写：辛弃疾以六百余首领跑，苏轼次之——豪放派在产量上也豪放。
+      </p>
+      <figure>
+        <img
+          src="/projects/east-wind/authors.png"
+          alt="存词数量最多的词人条形图：辛弃疾第一，苏轼第二"
+          loading="lazy"
+        />
+        <figcaption>存词最多的词人。</figcaption>
+      </figure>
+    </section>
+
+    <section class="chapter" aria-labelledby="ch2">
+      <p class="section-kicker">贰 / the neighborhood of a word</p>
+      <h2 id="ch2">词的邻居</h2>
+      <p>
+        Word2Vec 把每个词放进同一个向量空间。问模型：<strong>“春天”</strong>旁边站着谁？
+      </p>
+      <p class="word-chips" aria-label="与春天最相似的词">
+        <span>浓绿</span><span>春阴</span><span>繁杏</span><span>红透</span><span>迟日</span><span>花市</span><span>双飞燕</span><span>春日</span><span>晴昼</span><span>舞困</span>
+      </p>
+      <p>这份相似词表几乎自己就是一阕小令。</p>
+      <figure>
+        <img
+          src="/projects/east-wind/network-chuntian.png"
+          alt="以春天为中心的相似词网络图"
+          loading="lazy"
+        />
+        <figcaption>“春天”的相似词网络：春天连着浓绿与繁杏，浓绿连着双飞燕与晴昼。</figcaption>
+      </figure>
+      <p>
+        再让 K-Means 在全部词向量上自由聚类，它无师自通地把宋词拆成了两种材料：
+        一簇全是虚词——<span class="inline-words">是、与、更、有、在、我、不、为</span>；
+        另一簇全是意象——<span class="inline-words">月、东风、春、倚、听、西风、雨、花、绣、吹</span>。
+        语法与意象，一部宋词的骨与肉，被一个不识字的算法分拣了出来。
+        主题模型（LDA）也认出了自己的门类：长生、蟠桃、神仙与人间挤在同一个主题里——那是宋人的“寿词”。
+      </p>
+    </section>
+
+    <section class="chapter" aria-labelledby="ch3">
+      <p class="section-kicker">叁 / echoes of a poem</p>
+      <h2 id="ch3">一首词的回声</h2>
+      <p>
+        Doc2Vec 给整首词一个向量。以《水调歌头》为查询——
+      </p>
+      <blockquote class="ci-quote">
+        <p>明月几时有，把酒问青天。……人有悲欢离合，月有阴晴圆缺，此事古难全。但愿人长久，千里共婵娟。</p>
+        <cite>苏轼《水调歌头》（查询词篇）</cite>
+      </blockquote>
+      <p>检索到的近邻里，有一首这样的词（相似度 0.61）：</p>
+      <blockquote class="ci-quote">
+        <p>昨夜中秋今夕望，十分桂影团圆。玉人相对绿尊前。素娥有恨，应是妒蝉娟。……</p>
+        <cite>检索结果第二名</cite>
+      </blockquote>
+      <p>
+        模型从没被告知“中秋”是什么。它只是在向量空间里听见了同一种月光——
+        “团圆”对“婵娟”，“素娥有恨”对“不应有恨”。
+      </p>
+    </section>
+
+    <section class="chapter" aria-labelledby="ch4">
+      <p class="section-kicker">肆 / the model answers</p>
+      <h2 id="ch4">补字</h2>
+      <p>
+        最后，从零训练一个只读过宋词的字符级 Transformer，让它做补字题。
+        先来一道课本内的：
+      </p>
+      <div class="cloze">
+        <p class="cloze-q">但愿人长久，千里共婵〔？〕</p>
+        <div class="preds">
+          <div class="pred"><span class="pred-char">娟</span><span class="pred-track"><span class="pred-bar" style="width: 84%"></span></span><span class="pred-p">59.7%</span></div>
+          <div class="pred"><span class="pred-char">翠</span><span class="pred-track"><span class="pred-bar" style="width: 37%"></span></span><span class="pred-p">26.6%</span></div>
+        </div>
       </div>
+      <p>
+        再来一道课本外的。“人间何处是东〔？〕”——这句话由语料最高频的几个词拼成，
+        却在两万首词里<strong>从未出现过</strong>。模型没有任何背诵可依。
+      </p>
+      <div class="cloze">
+        <p class="cloze-q">人间何处是东〔？〕</p>
+        <div class="preds">
+          <div class="pred"><span class="pred-char">风</span><span class="pred-track"><span class="pred-bar" style="width: 54%"></span></span><span class="pred-p">38.8%</span></div>
+          <div class="pred"><span class="pred-char">篱</span><span class="pred-track"><span class="pred-bar" style="width: 27%"></span></span><span class="pred-p">19.4%</span></div>
+          <div class="pred"><span class="pred-char">味</span><span class="pred-track"><span class="pred-bar" style="width: 21%"></span></span><span class="pred-p">14.9%</span></div>
+          <div class="pred"><span class="pred-char">流</span><span class="pred-track"><span class="pred-bar" style="width: 19%"></span></span><span class="pred-p">13.6%</span></div>
+        </div>
+      </div>
+      <p>
+        它答了“风”。而第二名的“篱”更妙——模型在<strong>东风</strong>与<strong>东篱</strong>之间犹豫了一瞬：
+        一半是苏轼的问句，一半是陶渊明的答案。
+      </p>
+      <p class="aside-note">
+        诚实的注脚：这个小模型若连续生成，会写出“天游是春梢玉沙”这样的呓语。
+        它不是诗人，只是一个刚背完全宋词的学生——补字，是它能做的最好的事。
+      </p>
+    </section>
+
+    <section class="chapter notes" aria-labelledby="ch5">
+      <p class="section-kicker">尾注 / notes</p>
+      <h2 id="ch5">方法与出处</h2>
+      <ul>
+        <li>
+          数据：《全宋词》全集；另有 Poetry Foundation 英文诗作对照语料。
+        </li>
+        <li>
+          方法：jieba 分词 · gensim Word2Vec / Doc2Vec · LDA 主题模型 ·
+          PyTorch 字符级 Transformer（从零训练）。
+        </li>
+        <li>
+          本页所有图表与模型输出均原样取自课程作业 notebook。
+        </li>
+        <li>
+          交互演示：<a href="https://byleon-east-wind-songci.hf.space">Hugging Face Space</a> ·
+          <a href="https://huggingface.co/spaces/BYLEON/east-wind-songci">Space 仓库</a>
+          （中国大陆访问受限）。
+        </li>
+      </ul>
     </section>
   </article>
 </BaseLayout>
@@ -46,15 +175,17 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
 <style>
   .east-wind {
     --ink: #202124;
-    --muted: #5f6368;
+    --paper-muted: #5f6368;
     --line: #d9dedb;
     --soft: #f6f7f5;
     --accent: #2f6f73;
     --accent-dark: #214f52;
-    max-width: 1180px;
+    --serif: Georgia, "Noto Serif SC", "Songti SC", "SimSun", serif;
+    max-width: 720px;
     margin: 0 auto;
     padding: 40px 20px 64px;
     color: var(--ink);
+    font-family: var(--serif);
   }
 
   .back-link {
@@ -66,24 +197,24 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
   }
 
   .back-link:hover,
-  .project-credit a:hover,
-  .project-actions a:hover {
+  .project-credit a:hover {
     text-decoration: underline;
   }
 
   .project-head {
     display: grid;
     gap: 18px;
-    padding-bottom: 30px;
+    padding-bottom: 34px;
     border-bottom: 1px solid var(--line);
   }
 
   .section-kicker {
     margin: 0;
     color: var(--accent-dark);
-    font-size: 0.82rem;
-    font-weight: 700;
-    letter-spacing: 0;
+    font-family: var(--mono);
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
     text-transform: uppercase;
   }
 
@@ -93,37 +224,32 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
     margin: 0;
   }
 
-  code {
-    font-size: 0.95em;
-    color: var(--accent-dark);
+  .east-wind h1,
+  .east-wind h2 {
+    font-family: var(--serif);
   }
 
   h1 {
-    max-width: 980px;
-    font-size: clamp(2.15rem, 5vw, 4.6rem);
-    line-height: 1.03;
-    letter-spacing: 0;
+    font-size: clamp(1.9rem, 4.6vw, 3.2rem);
+    line-height: 1.22;
   }
 
   h2 {
-    font-size: clamp(1.55rem, 3vw, 2.65rem);
-    line-height: 1.12;
-    letter-spacing: 0;
+    font-size: clamp(1.3rem, 2.6vw, 1.7rem);
+    line-height: 1.3;
   }
 
-  .project-credit,
-  .section-head p {
-    max-width: 900px;
-    color: var(--muted);
+  .project-credit {
+    color: var(--paper-muted);
     font-size: 1.02rem;
-    line-height: 1.78;
+    line-height: 1.95;
   }
 
-  .project-credit span,
-  .section-head span {
+  .project-credit span {
     display: block;
     margin-top: 6px;
     color: #747a7d;
+    font-size: 0.94rem;
   }
 
   .project-credit a {
@@ -132,57 +258,158 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
     text-decoration: none;
   }
 
-  .project-actions {
+  .chapter {
+    display: grid;
+    gap: 16px;
+    padding: 34px 0;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .chapter:last-child {
+    border-bottom: 0;
+  }
+
+  .chapter p {
+    font-size: 1.04rem;
+    line-height: 2.05;
+    text-align: justify;
+  }
+
+  .chapter strong {
+    color: var(--accent-dark);
+  }
+
+  figure {
+    margin: 8px 0 0;
+  }
+
+  figure img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    background: #fff;
+  }
+
+  figcaption {
+    margin-top: 8px;
+    color: var(--paper-muted);
+    font-size: 0.9rem;
+    line-height: 1.7;
+  }
+
+  .word-chips {
     display: flex;
     flex-wrap: wrap;
-    gap: 10px;
-    padding-top: 4px;
+    gap: 8px 10px;
   }
 
-  .project-actions a {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    min-height: 42px;
-    padding: 0 16px;
-    border: 1px solid var(--accent);
-    border-radius: 6px;
+  .word-chips span {
+    padding: 2px 12px;
+    border: 1px solid color-mix(in srgb, var(--accent) 42%, var(--line));
+    border-radius: 999px;
+    background: color-mix(in srgb, var(--soft) 72%, transparent);
     color: var(--accent-dark);
+    font-size: 0.98rem;
+    line-height: 1.9;
+  }
+
+  .inline-words {
+    color: var(--accent-dark);
+  }
+
+  .ci-quote {
+    margin: 4px 0;
+    padding: 14px 20px;
+    border-left: 3px solid var(--accent);
+    background: var(--soft);
+    border-radius: 0 8px 8px 0;
+  }
+
+  .ci-quote p {
+    font-size: 1.02rem;
+    line-height: 2.05;
+    color: var(--ink);
+  }
+
+  .ci-quote cite {
+    display: block;
+    margin-top: 6px;
+    color: var(--paper-muted);
+    font-size: 0.88rem;
+    font-style: normal;
+  }
+
+  .cloze {
+    padding: 16px 20px;
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    background: #fff;
+  }
+
+  .cloze-q {
+    font-size: 1.12rem;
     font-weight: 700;
-    text-decoration: none;
+    margin-bottom: 12px;
   }
 
-  .project-actions a:first-child {
-    background: var(--accent);
-    color: #fff;
-  }
-
-  .space-section {
+  .preds {
     display: grid;
-    gap: 22px;
-    padding: 34px 0;
+    gap: 8px;
   }
 
-  .section-head {
+  .pred {
     display: grid;
+    grid-template-columns: 2em minmax(0, 1fr) 4.2em;
+    align-items: center;
     gap: 12px;
   }
 
-  .space-frame-wrap {
-    width: 100%;
-    min-height: 780px;
-    border: 1px solid var(--line);
-    border-radius: 8px;
-    overflow: hidden;
-    background: var(--soft);
+  .pred-char {
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--accent-dark);
+    text-align: center;
   }
 
-  .space-frame-wrap iframe {
+  .pred-track {
     display: block;
-    width: 100%;
-    height: min(92vh, 900px);
-    min-height: 780px;
-    border: 0;
+    height: 10px;
+    border-radius: 999px;
+    background: color-mix(in srgb, var(--line) 55%, transparent);
+    overflow: hidden;
+  }
+
+  .pred-bar {
+    display: block;
+    height: 100%;
+    border-radius: 999px;
+    background: linear-gradient(90deg, var(--accent), var(--accent-dark));
+  }
+
+  .pred-p {
+    color: var(--paper-muted);
+    font-family: var(--mono);
+    font-size: 0.82rem;
+    text-align: right;
+  }
+
+  .aside-note {
+    color: var(--paper-muted);
+    font-size: 0.95rem;
+  }
+
+  .notes ul {
+    margin: 0;
+    padding-left: 1.2em;
+    color: var(--paper-muted);
+    font-size: 0.98rem;
+    line-height: 2;
+  }
+
+  .notes a {
+    color: var(--accent-dark);
   }
 
   @media (max-width: 760px) {
@@ -190,13 +417,8 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
       padding: 28px 16px 48px;
     }
 
-    .project-actions a {
-      width: 100%;
-    }
-
-    .space-frame-wrap,
-    .space-frame-wrap iframe {
-      min-height: 680px;
+    .chapter p {
+      text-align: left;
     }
   }
 </style>

@@ -32,8 +32,8 @@ The notes site is a separate repo (`BYNotes`) with its own CLAUDE.md.
 
 - Zero third-party runtime requests: never add fonts.googleapis /
   fonts.gstatic / jsDelivr / cdnjs references. Fonts are self-hosted via
-  `@fontsource`; Noto Serif SC is imported only on writing pages — keep it
-  that way.
+  `@fontsource`; Noto Serif SC is imported per-page only where CJK serif is
+  needed (writing pages, `/projects/east-wind/`) — never site-wide.
 - npm scripts must remain PowerShell-safe (no `VAR=x` command prefixes).
 - Moving a page's URL requires leaving a redirect stub at the old route
   (pattern: `src/pages/writing/east-wind.astro`).
