@@ -28,24 +28,9 @@ export const interests = [
   },
 ];
 
+// Research projects (Retrain-CP, Holder-smooth) are intentionally unlisted
+// until they are public.
 export const projects = [
-  {
-    name: "Retrain-CP",
-    href: "https://github.com/By-Xin/Retrain-CP",
-    repo: "https://github.com/By-Xin/Retrain-CP",
-    meta: "Research code",
-    description:
-      "Experiments around retraining and conformal prediction under shift.",
-    group: "research",
-  },
-  {
-    name: "Holder smooth optimization",
-    href: "/projects/",
-    meta: "Working notes",
-    description:
-      "Drafts and notes on smoothing, accelerated methods, and related analysis.",
-    group: "research",
-  },
   {
     name: "东风何处是人间 / Where Does the East Wind Find the Earth?",
     href: "/projects/east-wind/",
