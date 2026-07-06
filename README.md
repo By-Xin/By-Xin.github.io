@@ -77,8 +77,8 @@ Google Fonts is blocked in mainland China, so the published site makes
   `BaseLayout.astro` (Schibsted Grotesk 500/600/700, Source Sans 3
   400/500/600, IBM Plex Mono 400/500).
 - Noto Serif SC 400/700 is imported per-page only where CJK serif is needed
-  (`EssayLayout.astro`, the writing index, `/projects/east-wind/`), so CJK
-  font slices never load site-wide.
+  (`EssayLayout.astro` and the writing index), so CJK font slices never load
+  site-wide.
 - The `--sans` stack in `global.css` carries CJK fallbacks
   (PingFang SC / Hiragino Sans GB / Microsoft YaHei).
 - Never reintroduce `fonts.googleapis.com`, `fonts.gstatic.com`, jsDelivr,

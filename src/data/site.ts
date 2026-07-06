@@ -33,10 +33,11 @@ export const interests = [
 export const projects = [
   {
     name: "东风何处是人间 / Where Does the East Wind Find the Earth?",
-    href: "/projects/east-wind/",
+    href: "https://byleon-east-wind-songci.hf.space",
+    repo: "https://huggingface.co/spaces/BYLEON/east-wind-songci",
     meta: "Side project",
     description:
-      "以《东风何处是人间》为灵感起点，整理《全宋词》的词频、词群与作品距离。",
+      "宋词文本挖掘小项目，交互演示托管于 Hugging Face Space（中国大陆访问受限）。",
     group: "side",
   },
 ];
