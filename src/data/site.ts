@@ -1,11 +1,11 @@
 export const site = {
-  name: "XIN Baiying",
-  title: "XIN Baiying",
+  name: "By XIN",
+  title: "By XIN",
   description:
     "A quiet academic homepage spanning statistics, optimization, and learning.",
   url: "https://by-xin.github.io",
   github: "https://github.com/By-Xin",
-  email: "xin.by@outlook.com",
+  email: "by_xin@sjtu.edu.cn",
   notes: "/BYNotes/",
 };
 
