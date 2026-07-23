@@ -9,25 +9,6 @@ export const site = {
   notes: "/BYNotes/",
 };
 
-export const interests = [
-  {
-    title: "Statistical learning theory",
-    text: "Generalization, high-dimensional phenomena, uncertainty, and the statistical structure of prediction.",
-  },
-  {
-    title: "Optimization for learning",
-    text: "First-order methods, nonconvex landscapes, implicit bias, and scalable algorithms for learning problems.",
-  },
-  {
-    title: "Deep learning and LLMs",
-    text: "Theoretical and empirical questions in representation, scaling, and model behavior.",
-  },
-  {
-    title: "Statistics × Optimization × Learning",
-    text: "Mathematical perspectives on modern learning systems across statistical principles, optimization dynamics, and learning algorithms.",
-  },
-];
-
 // Research projects (Retrain-CP, Holder-smooth) are intentionally unlisted
 // until they are public.
 export const projects = [

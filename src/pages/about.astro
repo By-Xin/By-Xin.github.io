@@ -1,6 +1,6 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
-import { interests, site } from "../data/site";
+import { site } from "../data/site";
 ---
 
 <BaseLayout
@@ -24,11 +24,6 @@ import { interests, site } from "../data/site";
       For longer technical notes, see <a href={site.notes}>BYNotes</a>. For
       code and public repositories, see <a href={site.github}>GitHub</a>.
     </p>
-
-    <h2>Interests</h2>
-    <ul>
-      {interests.map((item) => <li><strong>{item.title}</strong>: {item.text}</li>)}
-    </ul>
 
     <h2>Links</h2>
     <ul>
