@@ -18,8 +18,7 @@ export const projects = [
     href: "https://byleon-east-wind-songci.hf.space",
     repo: "https://huggingface.co/spaces/BYLEON/east-wind-songci",
     meta: "Side project",
-    description:
-      "宋词文本挖掘小项目，交互演示托管于 Hugging Face Space。",
+    description: "",
     group: "side",
   },
 ];

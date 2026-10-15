@@ -30,7 +30,7 @@ const groups = [
               {group.items.map((project) => (
                 <article class="directory-entry">
                     <a class="directory-title" href={project.href}>{project.name}</a>
-                    <p class="directory-description">{project.description}</p>
+                    {project.description && <p class="directory-description">{project.description}</p>}
                     <span class="directory-meta">{project.meta}</span>
                     {project.repo && <p class="directory-description"><a href={project.repo}>Repository</a></p>}
                 </article>
