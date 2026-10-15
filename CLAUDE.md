@@ -21,8 +21,9 @@ The notes site is a separate repo (`BYNotes`) with its own CLAUDE.md.
 
 ## Taxonomy (do not violate)
 
-- The homepage has section 01/notes for Study Notes and section 02/updates
-  for personal Recent updates. It never lists essay titles.
+- The homepage has one Recent updates section: Notes first, followed by
+  Publications & Preprints from `src/data/publications.ts` when populated.
+  Do not display News yet. The homepage never lists essay titles.
 - Essays → the content collection. Curated shelves → `collections` in
   `src/data/writing.ts`. Projects → `src/data/site.ts` with
   `group: "research" | "side"` (east-wind is `side`).

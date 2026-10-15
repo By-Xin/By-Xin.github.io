@@ -2,6 +2,7 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 import { getBYNotesUpdates } from "../data/bynotes";
 import { site } from "../data/site";
+import { publications } from "../data/publications";
 
 const bynotesUpdates = await getBYNotesUpdates();
 ---
@@ -18,49 +19,92 @@ const bynotesUpdates = await getBYNotesUpdates();
     </div>
   </section>
 
-  <section class="section" aria-labelledby="notes-title">
-    <p class="section-kicker">01 / notes</p>
-    <div class="section-body">
-      <h2 id="notes-title">
-        <a class="section-title-link" href={site.notes}>Study Notes</a>
-      </h2>
-      <div class="note-panel">
-        <div class="note-panel-heading">
-          <p class="eyebrow">Curated notes</p>
-          <h3 id="bynotes-recent-updates">Recent Updates</h3>
-        </div>
-        <ol class="note-updates" aria-labelledby="bynotes-recent-updates">
-          {
-            bynotesUpdates.map((item) => (
-              <li>
-                <time datetime={item.date}>
-                  {item.displayDate ?? item.date}
-                </time>
-                <a class="entry-title" href={item.href}>{item.title}</a>
-                <p>{item.summary}</p>
-              </li>
-            ))
-          }
-        </ol>
+  <section class="recent-updates" aria-labelledby="updates-title">
+    <h2 id="updates-title">Recent updates</h2>
+    <section class="update-group" aria-labelledby="notes-title">
+      <div class="update-group-heading">
+        <h3 id="notes-title">Notes</h3>
+        <a href={site.notes}>All notes <span aria-hidden="true">↗</span></a>
       </div>
-    </div>
-  </section>
-
-  <section class="section" aria-labelledby="updates-title">
-    <p class="section-kicker">02 / updates</p>
-    <div class="section-body">
-      <h2 id="updates-title">Recent updates</h2>
-      <!-- Add personal updates here as they become available. -->
-    </div>
+      <ol class="note-updates" aria-labelledby="notes-title">
+        {
+          bynotesUpdates.map((item) => (
+            <li>
+              <time datetime={item.date}>
+                {item.displayDate ?? item.date}
+              </time>
+              <a class="entry-title" href={item.href}>{item.title}</a>
+              <p>{item.summary}</p>
+            </li>
+          ))
+        }
+      </ol>
+    </section>
+    {publications.length > 0 && (
+      <section class="update-group" aria-labelledby="publications-title">
+        <div class="update-group-heading">
+          <h3 id="publications-title">Publications &amp; Preprints</h3>
+        </div>
+        <ol class="note-updates" aria-labelledby="publications-title">
+          {publications.map((item) => (
+            <li>
+              <a class="entry-title" href={item.href}>{item.title}</a>
+              <p>{item.authors}</p>
+              <p class="publication-venue">{item.venue}</p>
+              {item.code && <a href={item.code}>Code</a>}
+            </li>
+          ))}
+        </ol>
+      </section>
+    )}
   </section>
 </BaseLayout>
 
 <style>
+  .lede {
+    font-size: calc(1.08rem - 2px);
+  }
+
+  .recent-updates {
+    padding-top: 2.6rem;
+  }
+
+  .update-group {
+    margin-top: 1.8rem;
+  }
+
+  .update-group + .update-group {
+    margin-top: 2.6rem;
+  }
+
+  .update-group-heading {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 1rem;
+    border-bottom: 1px solid var(--border-strong);
+    padding-bottom: 0.8rem;
+    margin-bottom: 1rem;
+  }
+
+  .update-group-heading h3 {
+    font-size: 1.05rem;
+  }
+
+  .update-group-heading > a {
+    font-size: 0.88rem;
+    white-space: nowrap;
+  }
+
+  .publication-venue {
+    font-style: italic;
+  }
+
   .hero-motto {
     margin-top: 1.1rem;
     color: var(--accent);
     font-family: "Baskerville", "Palatino Linotype", "Book Antiqua", Georgia, serif;
-    font-size: clamp(1.25rem, 2.5vw, 1.5rem);
+    font-size: clamp(calc(1.25rem - 2px), calc(2.5vw - 2px), calc(1.5rem - 2px));
     font-style: italic;
     line-height: 1.5;
   }

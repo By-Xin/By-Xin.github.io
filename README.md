@@ -39,8 +39,9 @@ This README is the operating manual for the site. Agent-facing rules live in
 
 Rules:
 
-- The homepage has `01 / notes` for Study Notes and `02 / updates` for
-  personal Recent updates. It does not list individual essay titles.
+- The homepage has one Recent updates section: Notes first, followed by
+  Publications & Preprints from `src/data/publications.ts` when entries exist.
+  News is not displayed yet. It does not list individual essay titles.
 - `/writing/` shows essays year-grouped, then a "Collections · 收藏" section.
 
 ## Publishing an essay
