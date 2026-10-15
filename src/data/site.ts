@@ -1,6 +1,6 @@
 export const site = {
-  name: "By XIN",
-  title: "By XIN",
+  name: "Baiying Xin",
+  title: "Baiying Xin",
   description:
     "A quiet academic homepage spanning statistics, optimization, and learning.",
   url: "https://by-xin.github.io",
