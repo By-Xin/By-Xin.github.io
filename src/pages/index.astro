@@ -23,7 +23,7 @@ const bynotesUpdates = await getBYNotesUpdates();
     <h2 id="updates-title">Recent updates</h2>
     <section class="update-group" aria-labelledby="notes-title">
       <div class="update-group-heading">
-        <h3 id="notes-title">Notes</h3>
+        <h3 id="notes-title">01 / notes</h3>
         <a href={site.notes}>All notes <span aria-hidden="true">↗</span></a>
       </div>
       <ol class="note-updates" aria-labelledby="notes-title">
@@ -43,7 +43,7 @@ const bynotesUpdates = await getBYNotesUpdates();
     {publications.length > 0 && (
       <section class="update-group" aria-labelledby="publications-title">
         <div class="update-group-heading">
-          <h3 id="publications-title">Publications &amp; Preprints</h3>
+          <h3 id="publications-title">02 / publications &amp; preprints</h3>
         </div>
         <ol class="note-updates" aria-labelledby="publications-title">
           {publications.map((item) => (
@@ -70,7 +70,12 @@ const bynotesUpdates = await getBYNotesUpdates();
   }
 
   .update-group {
+    display: grid;
+    grid-template-columns: minmax(140px, 0.25fr) minmax(0, 1fr);
+    gap: 2rem;
     margin-top: 1.8rem;
+    border-top: 1px solid var(--border-strong);
+    padding-top: 1.1rem;
   }
 
   .update-group + .update-group {
@@ -79,16 +84,17 @@ const bynotesUpdates = await getBYNotesUpdates();
 
   .update-group-heading {
     display: flex;
-    align-items: baseline;
-    justify-content: space-between;
-    gap: 1rem;
-    border-bottom: 1px solid var(--border-strong);
-    padding-bottom: 0.8rem;
-    margin-bottom: 1rem;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.7rem;
   }
 
   .update-group-heading h3 {
-    font-size: 1.05rem;
+    color: var(--quiet);
+    font-family: var(--mono);
+    font-size: 0.78rem;
+    font-weight: 400;
+    line-height: 1.6;
   }
 
   .update-group-heading > a {
@@ -98,6 +104,20 @@ const bynotesUpdates = await getBYNotesUpdates();
 
   .publication-venue {
     font-style: italic;
+  }
+
+  @media (max-width: 760px) {
+    .update-group {
+      grid-template-columns: 1fr;
+      gap: 1rem;
+    }
+
+    .update-group-heading {
+      flex-direction: row;
+      align-items: baseline;
+      justify-content: space-between;
+      flex-wrap: wrap;
+    }
   }
 
   .hero-motto {
