@@ -5,7 +5,7 @@ export const site = {
     "A quiet academic homepage spanning statistics, optimization, and learning.",
   url: "https://by-xin.github.io",
   github: "https://github.com/By-Xin",
-  linkedin: "",
+  linkedin: "https://www.linkedin.com/in/baiyingxin/",
   email: "by_xin@sjtu.edu.cn",
   notes: "/BYNotes/",
 };
