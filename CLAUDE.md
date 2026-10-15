@@ -31,6 +31,9 @@ The notes site is a separate repo (`BYNotes`) with its own CLAUDE.md.
 
 ## Hard invariants
 
+- About, Projects, and the Writing index share `ContentPageLayout.astro`:
+  common content width, title, spacing, and directory styles. Essay pages
+  retain their separate reading layout.
 - Zero third-party runtime requests: never add fonts.googleapis /
   fonts.gstatic / jsDelivr / cdnjs references. Fonts are self-hosted via
   `@fontsource`; Noto Serif SC is imported per-page only where CJK serif is

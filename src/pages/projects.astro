@@ -1,5 +1,5 @@
 ---
-import BaseLayout from "../layouts/BaseLayout.astro";
+import ContentPageLayout from "../layouts/ContentPageLayout.astro";
 import { projects } from "../data/site";
 
 const groups = [
@@ -13,50 +13,30 @@ const groups = [
   .filter((group) => group.items.length > 0);
 ---
 
-<BaseLayout
+<ContentPageLayout
   current="projects"
   title="Projects"
   description="Research projects, publications, code, and side projects."
 >
-  <section class="section" aria-labelledby="projects-title">
-    <p class="section-kicker">projects</p>
-    <div class="section-body">
-      <h1 id="projects-title">Projects</h1>
-      <p class="section-intro">
+      <p slot="intro">
         Research projects and publications will be listed here as they become
         public. Below: non-academic side projects.
       </p>
       {
         groups.map((group) => (
-          <section aria-label={group.title}>
-            <h2 class="group-title">{group.title}</h2>
-            <div class="entry-list">
+          <section class="directory-group" aria-label={group.title}>
+            <h2 class="directory-label">{group.title}</h2>
+            <div>
               {group.items.map((project) => (
-                <article class="entry">
-                  <div>
-                    <a class="entry-title" href={project.href}>{project.name}</a>
-                    <p>{project.description}</p>
-                    {project.repo && <p><a href={project.repo}>Repository</a></p>}
-                  </div>
-                  <span class="entry-meta">{project.meta}</span>
+                <article class="directory-entry">
+                    <a class="directory-title" href={project.href}>{project.name}</a>
+                    <p class="directory-description">{project.description}</p>
+                    <span class="directory-meta">{project.meta}</span>
+                    {project.repo && <p class="directory-description"><a href={project.repo}>Repository</a></p>}
                 </article>
               ))}
             </div>
           </section>
         ))
       }
-    </div>
-  </section>
-</BaseLayout>
-
-<style>
-  .group-title {
-    margin-bottom: 0.7rem;
-    color: var(--quiet);
-    font-family: var(--mono);
-    font-size: 0.82rem;
-    font-weight: 500;
-    letter-spacing: 0.05em;
-    text-transform: uppercase;
-  }
-</style>
+</ContentPageLayout>

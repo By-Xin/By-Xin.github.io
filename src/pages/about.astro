@@ -1,15 +1,14 @@
 ---
-import BaseLayout from "../layouts/BaseLayout.astro";
+import ContentPageLayout from "../layouts/ContentPageLayout.astro";
 import { site } from "../data/site";
 ---
 
-<BaseLayout
+<ContentPageLayout
   current="about"
   title="About"
   description={`A compact profile for ${site.name}.`}
 >
-  <article class="prose">
-    <h1>About</h1>
+  <Fragment slot="intro">
     <p>
       I am a first-year PhD student in optimization at ACEM, Shanghai Jiao Tong
       University, starting in September 2026, supervised by
@@ -20,12 +19,14 @@ import { site } from "../data/site";
       code and public repositories, see <a href={site.github}>GitHub</a>.
     </p>
 
-    <h2>Links</h2>
-    <ul>
+  </Fragment>
+  <section class="directory-group" aria-labelledby="links-title">
+    <h2 class="directory-label" id="links-title">Links</h2>
+    <ul class="plain-list">
       <li><a href={`mailto:${site.email}`}>{site.email}</a></li>
       <li><a href={site.notes}>BYNotes</a></li>
       <li><a href={site.github}>GitHub</a></li>
       <li><a href="https://github.com/By-Xin/BYNotes">BYNotes repository</a></li>
     </ul>
-  </article>
-</BaseLayout>
+  </section>
+</ContentPageLayout>

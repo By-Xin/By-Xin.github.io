@@ -24,6 +24,8 @@ This README is the operating manual for the site. Agent-facing rules live in
 - `src/content/essays/*.md` — the essays content collection
   (schema in `src/content.config.ts`).
 - Layouts: `BaseLayout.astro` (site chrome; per-page `lang` prop),
+  `ContentPageLayout.astro` (shared About, Projects, and Writing indexes:
+  760px content width, compact top spacing, shared typography and lists),
   `EssayLayout.astro` (reading layout: CJK serif, 620px measure,
   line-height 2.05, justified for `lang: zh`).
 
@@ -78,7 +80,7 @@ Google Fonts is blocked in mainland China, so the published site makes
   `BaseLayout.astro` (Schibsted Grotesk 500/600/700, Source Sans 3
   400/500/600, IBM Plex Mono 400/500).
 - Noto Serif SC 400/700 is imported per-page only where CJK serif is needed
-  (`EssayLayout.astro` and the writing index), so CJK font slices never load
+  (`EssayLayout.astro`), so CJK font slices never load
   site-wide.
 - The `--sans` stack in `global.css` carries CJK fallbacks
   (PingFang SC / Hiragino Sans GB / Microsoft YaHei).

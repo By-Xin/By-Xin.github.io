@@ -16,6 +16,7 @@ type Props = {
   description?: string;
   current?: "home" | "about" | "projects" | "writing";
   lang?: string;
+  compact?: boolean;
 };
 
 const {
@@ -23,6 +24,7 @@ const {
   description = site.description,
   current = "home",
   lang = "en",
+  compact = false,
 } = Astro.props;
 
 const pageTitle = title === site.title ? site.title : `${title} | ${site.title}`;
@@ -101,7 +103,7 @@ const nav = [
       </nav>
     </header>
 
-    <main id="main" class:list={["page", { "page-home": current === "home" }]}>
+    <main id="main" class:list={["page", { "page-compact": compact || current === "home" }]}>
       <slot />
     </main>
 
