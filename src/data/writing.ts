@@ -14,8 +14,7 @@ export const collections: WritingEntry[] = [
     title: "STATDIY bookmarks",
     href: "/writing/statdiy/",
     date: new Date("2023-06-27"),
-    description:
-      "A living bookmark shelf for statistics, data science, mathematics, systems, and academic writing.",
+    description: "",
   },
 ];
 
