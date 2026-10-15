@@ -101,7 +101,7 @@ const nav = [
       </nav>
     </header>
 
-    <main id="main" class="page">
+    <main id="main" class:list={["page", { "page-home": current === "home" }]}>
       <slot />
     </main>
 

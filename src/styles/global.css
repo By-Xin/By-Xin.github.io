@@ -156,6 +156,10 @@ p {
   padding: 4.5rem 0 5rem;
 }
 
+.page-home {
+  padding-top: 2rem;
+}
+
 .site-footer {
   display: flex;
   align-items: center;
@@ -174,7 +178,7 @@ p {
 
 .hero {
   display: block;
-  padding-bottom: 4rem;
+  padding-bottom: 2rem;
   border-bottom: 1px solid var(--border);
 }
 
@@ -428,6 +432,10 @@ h3 {
 
   .page {
     padding-top: 3rem;
+  }
+
+  .page-home {
+    padding-top: 1.5rem;
   }
 
   .section,
