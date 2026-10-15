@@ -39,8 +39,8 @@ This README is the operating manual for the site. Agent-facing rules live in
 
 Rules:
 
-- The homepage never lists individual essay titles — section `03 / writing`
-  is a short intro pointing at `/writing/`.
+- The homepage has `01 / notes` for Study Notes and `02 / updates` for
+  personal Recent updates. It does not list individual essay titles.
 - `/writing/` shows essays year-grouped, then a "Collections · 收藏" section.
 
 ## Publishing an essay
