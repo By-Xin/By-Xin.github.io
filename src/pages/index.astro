@@ -15,7 +15,9 @@ const bynotesUpdates = await getBYNotesUpdates();
         Hi~ o(*￣▽￣*)ブ<br />
         I am very much a beginner in the ocean of optimization and statistics.
       </p>
-      <p class="hero-motto">And so we beat on.</p>
+      <p class="hero-motto">
+        <img src="/and-so-we-beat-on.svg" alt="And so we beat on …" width="1471" height="188" />
+      </p>
     </div>
   </section>
 
@@ -122,10 +124,12 @@ const bynotesUpdates = await getBYNotesUpdates();
 
   .hero-motto {
     margin-top: 1.1rem;
-    color: var(--accent);
-    font-family: "Baskerville", "Palatino Linotype", "Book Antiqua", Georgia, serif;
-    font-size: clamp(calc(1.25rem - 2px), calc(2.5vw - 2px), calc(1.5rem - 2px));
-    font-style: italic;
-    line-height: 1.5;
+  }
+
+  .hero-motto img {
+    display: block;
+    width: 240px;
+    max-width: 100%;
+    height: auto;
   }
 </style>
