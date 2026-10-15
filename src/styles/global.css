@@ -86,6 +86,39 @@ p {
   border-bottom: 1px solid var(--border);
 }
 
+.header-identity {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.6rem 1rem;
+}
+
+.social-links {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.social-links a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  color: var(--muted);
+  border-radius: 4px;
+}
+
+.social-links a:hover,
+.social-links a:focus-visible {
+  color: var(--accent);
+}
+
+.social-links svg {
+  width: 1.1rem;
+  height: 1.1rem;
+}
+
 .brand {
   display: inline-flex;
   align-items: center;
