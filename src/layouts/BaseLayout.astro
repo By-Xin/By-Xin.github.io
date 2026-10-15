@@ -97,6 +97,7 @@ const nav = [
               aria-current={current === item.key ? "page" : undefined}
             >
               {item.label}
+              {item.key === "notes" && <span class="nav-external" aria-hidden="true">↗</span>}
             </a>
           ))
         }
