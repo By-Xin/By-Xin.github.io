@@ -1,5 +1,6 @@
 ---
 import ContentPageLayout from "../../layouts/ContentPageLayout.astro";
+import LinkMark from "../../components/LinkMark.astro";
 import { collections, getEssayEntries, isoDate } from "../../data/writing";
 
 const essays = await getEssayEntries();
@@ -16,7 +17,7 @@ const byYear = years.map((year) => ({
   description="Personal, non-academic writing: essays, fragments, and collections."
 >
       <p slot="intro">
-        Random words. Technical notes please refer to <a href="/BYNotes/">BYNotes<span aria-hidden="true">↗</span></a>.
+        Random words. Technical notes please refer to <a href="/BYNotes/">BYNotes<LinkMark /></a>.
       </p>
     {
       byYear.map(({ year, items }) => (

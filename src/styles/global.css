@@ -147,11 +147,6 @@ p {
   color: var(--muted);
 }
 
-.nav-external {
-  margin-left: 0.2em;
-  font-size: 0.8em;
-}
-
 .site-nav a[aria-current="page"],
 .site-nav a:hover {
   color: var(--accent);

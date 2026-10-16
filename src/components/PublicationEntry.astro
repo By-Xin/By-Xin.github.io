@@ -2,6 +2,7 @@
 import katex from "katex";
 import "katex/dist/katex.min.css";
 import type { Publication } from "../data/publications";
+import LinkMark from "./LinkMark.astro";
 
 type Props = { item: Publication };
 const { item } = Astro.props;
@@ -23,11 +24,7 @@ const summaryParts = (item.summary ?? "").split(/(\$[^$]+\$)/g);
         : part)}
     </p>
   )}
-  <div class="publication-links" aria-label="Paper links">
-    <a href={item.href}>arXiv ↗</a>
-    {item.pdf && <a href={item.pdf}>PDF ↗</a>}
-    {item.code && <a href={item.code}>Code ↗</a>}
-  </div>
+  {item.code && <div class="publication-links"><a href={item.code}>Code<LinkMark /></a></div>}
 </article>
 
 <style>
