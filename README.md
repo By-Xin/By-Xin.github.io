@@ -88,6 +88,8 @@ Google Fonts is blocked in mainland China, so the published site makes
   site-wide.
 - The `--sans` stack in `global.css` carries CJK fallbacks
   (PingFang SC / Hiragino Sans GB / Microsoft YaHei).
+- Body text uses the system Palatino family with local serif fallbacks via
+  `--body`; headings, navigation, metadata, and KaTeX retain their own fonts.
 - Never reintroduce `fonts.googleapis.com`, `fonts.gstatic.com`, jsDelivr,
   or cdnjs references. `og.png` and the favicon are local files.
 
