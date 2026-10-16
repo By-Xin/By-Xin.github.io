@@ -55,7 +55,7 @@ const htmlLang = lang === "zh" ? "zh-CN" : "en";
 
   .essay-body {
     font-family: var(--body);
-    font-size: 1.05rem;
+    font-size: var(--body-size);
     line-height: 2.05;
     color: var(--text);
   }
@@ -91,7 +91,6 @@ const htmlLang = lang === "zh" ? "zh-CN" : "en";
 
   @media (max-width: 760px) {
     .essay-body {
-      font-size: 1rem;
       line-height: 1.95;
     }
   }

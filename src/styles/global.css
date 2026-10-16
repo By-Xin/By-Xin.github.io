@@ -12,6 +12,7 @@
   --max: 980px;
   --sans: "Source Sans 3", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   --body: Palatino, "Palatino Linotype", "Book Antiqua", Georgia, "Noto Serif SC", "Songti SC", "SimSun", serif;
+  --body-size: calc(1rem - 1px);
   --display: "Schibsted Grotesk", var(--sans);
   --mono: "IBM Plex Mono", "SFMono-Regular", Consolas, monospace;
 }
@@ -156,6 +157,7 @@ p {
 .page {
   padding: 4.5rem 0 5rem;
   font-family: var(--body);
+  font-size: var(--body-size);
 }
 
 .page-compact {
@@ -218,7 +220,7 @@ h3 {
   max-width: 690px;
   margin-top: 1.35rem;
   color: var(--muted);
-  font-size: 1.08rem;
+  font-size: var(--body-size);
   line-height: 1.55;
 }
 
@@ -273,7 +275,7 @@ h3 {
 .section-intro {
   max-width: 680px;
   color: var(--muted);
-  font-size: 1.05rem;
+  font-size: var(--body-size);
 }
 
 .interest-grid {
