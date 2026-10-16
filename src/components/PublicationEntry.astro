@@ -1,0 +1,67 @@
+---
+import katex from "katex";
+import "katex/dist/katex.min.css";
+import type { Publication } from "../data/publications";
+
+type Props = { item: Publication };
+const { item } = Astro.props;
+const summaryParts = (item.summary ?? "").split(/(\$[^$]+\$)/g);
+---
+
+<article class="publication">
+  <a class="publication-title" href={item.href}>{item.title}</a>
+  <p class="publication-authors">{item.authors}</p>
+  <p class="publication-meta">{item.venue}</p>
+  {item.summary && (
+    <p class="publication-summary">
+      {summaryParts.map((part) => part.startsWith("$") && part.endsWith("$")
+        ? <Fragment set:html={katex.renderToString(part.slice(1, -1), {
+            throwOnError: true,
+            trust: false,
+            output: "htmlAndMathml",
+          })} />
+        : part)}
+    </p>
+  )}
+  <div class="publication-links" aria-label="Paper links">
+    <a href={item.href}>arXiv ↗</a>
+    {item.pdf && <a href={item.pdf}>PDF ↗</a>}
+    {item.code && <a href={item.code}>Code ↗</a>}
+  </div>
+</article>
+
+<style>
+  .publication { min-width: 0; }
+  .publication-title {
+    color: var(--accent);
+    font-family: var(--display);
+    font-size: 1rem;
+    font-weight: 600;
+    line-height: 1.6;
+  }
+  .publication-authors,
+  .publication-summary {
+    margin-top: 0.35rem;
+    color: var(--muted);
+  }
+  .publication-meta {
+    margin-top: 0.4rem;
+    color: var(--quiet);
+    font-family: var(--mono);
+    font-size: 0.76rem;
+  }
+  .publication-summary { line-height: 1.7; }
+  .publication-summary :global(.katex) { font-size: 1em; }
+  .publication-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-top: 0.6rem;
+    font-size: 0.9rem;
+  }
+  .publication + .publication {
+    margin-top: 1.1rem;
+    padding-top: 1.1rem;
+    border-top: 1px solid var(--border);
+  }
+</style>

@@ -16,6 +16,7 @@
     "@fontsource/schibsted-grotesk": "^5.2.8",
     "@fontsource/source-sans-3": "^5.2.9",
     "astro": "^6.3.7",
+    "katex": "^0.19.0",
     "typescript": "^6.0.3"
   }
 }

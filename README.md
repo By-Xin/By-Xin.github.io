@@ -17,6 +17,9 @@ This README is the operating manual for the site. Agent-facing rules live in
   `group: "research" | "side"`, which drives the grouped Projects page).
 - `src/data/writing.ts` — `getEssayEntries()` (reads the essays collection)
   and `collections` (curated shelves such as STATDIY).
+- `src/data/publications.ts` — shared paper metadata and LaTeX summaries for
+  the homepage and Projects. `PublicationEntry.astro` renders math at build
+  time with KaTeX and bundles its CSS/fonts locally.
 - `src/data/bynotes.ts` — homepage "Recent Updates": fetches
   `https://by-xin.github.io/BYNotes/recent-updates.json`, falls back to
   scraping the BYNotes homepage, then to the bundled
@@ -35,7 +38,8 @@ This README is the operating manual for the site. Agent-facing rules live in
 | --- | --- | --- |
 | Personal essays / journals | `src/content/essays/` collection | `/writing/<slug>/` |
 | Curated shelves (e.g. STATDIY) | custom page + `collections` in `writing.ts` | `/writing/...` |
-| Research projects & publications | `projects` in `site.ts`, `group: "research"` | `/projects/` |
+| Publications & preprints | `src/data/publications.ts` | homepage and `/projects/` |
+| Research projects | `projects` in `site.ts`, `group: "research"` | `/projects/` |
 | Non-academic side projects (e.g. east-wind) | `projects`, `group: "side"` | `/projects/...` |
 | Technical / course notes | the BYNotes repo, not this one | `/BYNotes/...` |
 

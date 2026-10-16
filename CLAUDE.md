@@ -27,6 +27,9 @@ The notes site is a separate repo (`BYNotes`) with its own CLAUDE.md.
 - Essays → the content collection. Curated shelves → `collections` in
   `src/data/writing.ts`. Projects → `src/data/site.ts` with
   `group: "research" | "side"` (east-wind is `side`).
+- Papers → `src/data/publications.ts`, shared by the homepage and Projects
+  through `PublicationEntry.astro`; summaries use `$...$` LaTeX rendered at
+  build time with local KaTeX CSS/fonts.
 - Course/technical notes belong in the BYNotes repo instead.
 
 ## Hard invariants

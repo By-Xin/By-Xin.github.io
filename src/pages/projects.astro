@@ -1,6 +1,8 @@
 ---
 import ContentPageLayout from "../layouts/ContentPageLayout.astro";
 import { projects } from "../data/site";
+import { publications } from "../data/publications";
+import PublicationEntry from "../components/PublicationEntry.astro";
 
 const groups = [
   { key: "research", title: "Research" },
@@ -19,9 +21,16 @@ const groups = [
   description="Research projects, publications, code, and side projects."
 >
       <p slot="intro">
-        Research projects and publications will be listed here as they become
-        public. Below: non-academic side projects.
+        Publications, preprints, and side projects.
       </p>
+      {publications.length > 0 && (
+        <section class="directory-group" aria-labelledby="papers-title">
+          <h2 class="directory-label" id="papers-title">Publications &amp; Preprints</h2>
+          <div>
+            {publications.map((item) => <PublicationEntry item={item} />)}
+          </div>
+        </section>
+      )}
       {
         groups.map((group) => (
           <section class="directory-group" aria-label={group.title}>

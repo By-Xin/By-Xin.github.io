@@ -10,8 +10,7 @@ export const site = {
   notes: "/BYNotes/",
 };
 
-// Research projects (Retrain-CP, Holder-smooth) are intentionally unlisted
-// until they are public.
+// Public papers live in publications.ts; keep other unpublished work unlisted.
 export const projects = [
   {
     name: "东风何处是人间 / Where Does the East Wind Find the Earth?",
