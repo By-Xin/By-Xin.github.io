@@ -17,6 +17,6 @@ export const publications: Publication[] = [
     venue: "2026 · arXiv:2610.21595 · Preprint",
     href: "https://arxiv.org/abs/2610.21595",
     pdf: "https://arxiv.org/pdf/2610.21595",
-    summary: String.raw`For $\min_u \frac{1}{p}\lVert Au-b\rVert_p^p+\omega(u)$, $1\le p<2$, we develop a smoothing-based first-order method with an $\mathcal{O}(\varepsilon^{-1/p})$ matrix–vector complexity and prove a matching $\Omega(\varepsilon^{-1/p})$ lower bound for deterministic algorithms.`,
+    summary: String.raw`For a class of Hölder-smooth problems arising from regularized $\ell_p$ regression with $1<p<2$, we develop a smoothing-based first-order method with an $\mathcal{O}(\varepsilon^{-1/p})$ matrix–vector complexity and prove a matching $\Omega(\varepsilon^{-1/p})$ lower bound for deterministic algorithms.`,
   },
 ];
