@@ -90,8 +90,8 @@ Google Fonts is blocked in mainland China, so the published site makes
   (PingFang SC / Hiragino Sans GB / Microsoft YaHei).
 - Body text uses the system Palatino family with local serif fallbacks via
   `--body`; headings, navigation, metadata, and KaTeX retain their own fonts.
-- Body paragraphs use `--body-size` throughout: 17px on desktop and 16px
-  on mobile. Avoid page-specific body font-size overrides.
+- Body paragraphs use `--body-size: 15pt` on desktop and mobile.
+  Avoid page-specific body font-size overrides.
 - Never reintroduce `fonts.googleapis.com`, `fonts.gstatic.com`, jsDelivr,
   or cdnjs references. `og.png` and the favicon are local files.
 
