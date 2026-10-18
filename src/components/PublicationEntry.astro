@@ -4,13 +4,13 @@ import "katex/dist/katex.min.css";
 import type { Publication } from "../data/publications";
 import LinkMark from "./LinkMark.astro";
 
-type Props = { item: Publication };
-const { item } = Astro.props;
+type Props = { item: Publication; titleClass?: "publication-title" | "entry-title" };
+const { item, titleClass = "publication-title" } = Astro.props;
 const summaryParts = (item.summary ?? "").split(/(\$[^$]+\$)/g);
 ---
 
 <article class="publication">
-  <a class="publication-title" href={item.href}>{item.title}</a>
+  <a class={titleClass} href={item.href}>{item.title}</a>
   <p class="publication-authors">{item.authors}</p>
   <p class="publication-meta">{item.venue}</p>
   {item.summary && (

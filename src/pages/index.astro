@@ -50,7 +50,7 @@ const bynotesUpdates = await getBYNotesUpdates();
         <ol class="note-updates" aria-labelledby="publications-title">
           {publications.map((item) => (
             <li>
-              <PublicationEntry item={item} />
+              <PublicationEntry item={item} titleClass="entry-title" />
             </li>
           ))}
         </ol>
